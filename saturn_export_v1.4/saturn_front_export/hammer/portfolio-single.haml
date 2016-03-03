@@ -1,0 +1,60 @@
+<!-- $colorSkin blue -->
+<!-- $colorImagesPath assets/images/colors/blue/ -->
+<!-- @include _header -->
+.header-main
+  <!-- @include _nav -->
+.separator-shadow-bottom.bottom-margin
+  %img{:src => "<!-- $imagesPath -->shadow-separator-wide-bottom.png", :alt => ""}/
+.container
+  .row
+    .col-md-7
+      .portfolio-single-image.animated.bounceInLeft
+        %img{:src => "http://dribbble.s3.amazonaws.com/users/44323/screenshots/1169482/surf_turf.png", :alt => ""}/
+    .col-md-4.col-md-offset-1
+      .portfolio-single-description
+        %h1 Project Name
+        .portfolio-single-tags
+          %a{:href => "#"} Web Design
+          %a{:href => "#"} Development
+          %a{:href => "#"} HTML
+        %p Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+        %a.btn.btn-clean-dark.btn-lg{:href => "#"} View Project
+  .pull-right.carousel-top-controls
+    %a{"data-slide" => "prev", :href => "#carousel-works"}
+      %span.icon-angle-left
+    %a{"data-slide" => "next", :href => "#carousel-works"}
+      %span.icon-angle-right
+  .related-portfolio-items
+    %h2.header-lined Related Portfolio Items
+    #carousel-works.carousel.slide.carousel-with-animated-content
+      / Wrapper for slides
+      .carousel-inner
+        .item.active
+          .row
+            .col-md-3
+              %a.animated-when-visible{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/73492/screenshots/1210682/potes_1x.jpg", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/31752/screenshots/1214482/my-pen-and-well.png", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/3460/screenshots/1211079/bus_illy_1x.png", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-three{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/23569/screenshots/1212234/prince_ink_co_long_live_print_1x.png", :alt => ""}/
+        .item
+          .row
+            .col-md-3
+              %a.animated-when-visible{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/73492/screenshots/1210682/potes_1x.jpg", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/31752/screenshots/1214482/my-pen-and-well.png", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/3460/screenshots/1211079/bus_illy_1x.png", :alt => ""}/
+            .col-md-3
+              %a.animated-when-visible.delay-animation-three{ "data-animation-type" => "flipInY", :href => "#"}
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/23569/screenshots/1212234/prince_ink_co_long_live_print_1x.png", :alt => ""}/
+<!-- @include _footer -->

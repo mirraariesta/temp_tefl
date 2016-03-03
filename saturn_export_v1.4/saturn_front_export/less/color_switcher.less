@@ -1,0 +1,154 @@
+
+// COLOR SETTINGS BOX _ YOU DON't NEED IT FOR PRODUCTION, THESE ARE JUST FOR DEMO PURPOSES
+.color_settings_box {
+  position: fixed;
+  right: -100px;
+  width: 100px;
+  top: 15%;
+  padding: 20px;
+  background-color: #fff;
+  z-index: 9999;
+  text-align: center;
+  .box-shadow(~"inset 1px 1px 2px 0px #fff, 0px 0px 15px 2px rgba(0,0,0,0.3)");
+  border: 1px solid rgba(0,0,0,0.6);
+  border-right: none;
+  border-radius: 6px 0px 0px 6px;
+  .toggle-color-settings {
+    border-radius: 6px 0px 0px 6px;
+    .box-shadow(-3px 0px 7px 0px rgba(0,0,0,0.3));
+    border: 1px solid rgba(0,0,0,0.6);
+    border-right: none;
+    position: absolute;
+    left: -50px;
+    top: 40%;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50px;
+    text-align: center;
+    i {
+      line-height: 25px;
+      font-size: 20px;
+      color: #555;
+    }
+    span {
+      text-transform: uppercase;
+      font-size: 10px;
+      line-height: 15px;
+      display: block;
+      vertical-align: top;
+    }
+    &:hover {
+      cursor: pointer;
+      i {
+        color: #1D8FD6;
+      }
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+  h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    i {
+      margin-right: 5px;
+      font-size: 18px;
+      color: #555;
+    }
+    &:first-child {
+      margin-top: 5px;
+    }
+  }
+  .checkbox-w {
+    line-height: 20px;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .wood-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background: #5f3c22 url(bg-wood.jpg) top left repeat;
+    .box-shadow(~"inset 1px 1px 1px rgba(255,255,255,0.3)");
+    border: 1px solid #4F4D45;
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-bottom: -5px;
+  }
+
+
+  .color-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #333;
+    display: inline-block;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    &:hover, &.active {
+
+      &:after {
+        content: "\f077";
+        font-family: FontAwesome;
+        position: absolute;
+        bottom: -14px;
+        left: 6px;
+        font-size: 8px;
+        color: #333;
+      }
+    }
+  }
+
+  .color-box-white {
+    background-color: #fff;
+  }
+  .color-box-grey {
+    background-color: #ddd;
+  }
+  .color-box-beige {
+    background-color: #E5E1D3;
+  }
+  .color-box-red {
+    background-color: #e74c3c;
+  }
+  .color-box-green {
+    background-color: #2ECC71;
+  }
+  .color-box-green-sea {
+    background-color: #16A085;
+  }
+  .color-box-blue {
+    background-color: #3498db;
+  }
+  .color-box-light-blue {
+    background-color: #E5F5FC;
+  }
+  .color-box-dark-blue {
+    background-color: #2c3e50;
+  }
+  .color-box-orange {
+    background-color: #e67e22;
+  }
+  .color-box-grey {
+    background-color: #777;
+  }
+  .color-box-linen-dark {
+    background-color: #323641;
+    background-image: url(body-linen.jpg);
+    background-repeat: repeat;
+    background-position: top left;
+  }
+  .color-box-linen-light {
+    background-color: #b0b1b4;
+    background-image: url(linen-grey.jpg);
+    background-repeat: repeat;
+    background-position: top left;
+  }
+}

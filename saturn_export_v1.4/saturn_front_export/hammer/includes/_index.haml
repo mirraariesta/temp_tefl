@@ -1,0 +1,648 @@
+<!-- @include _header -->
+.noise-wrapper
+  #anchorHome.header-main.header-tp
+    <!-- @include _nav -->
+  .separator-shadow-bottom
+    %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-bottom.png", :alt => ""}/
+  %section.leaderboard.leaderboard-style-one
+    .container
+      %h1.animated.fadeInDown Welcome to theme Earth
+      %h2.animated.fadeInDown Earth is a beautiful responsive template with a focus on readability
+      .relative-w
+        .loupe.loupe-left.animated.rollIn
+          %img{:src => "http://cdn.pins.ms/earth_html/showcase.png", :alt => ""}/
+        .loupe.loupe-right.animated.flipInY
+          %img{:src => "http://cdn.pins.ms/earth_html/showcase.png", :alt => ""}/
+        .frame-browser.animated.bounceInUp
+          .frame-buttons
+            .frame-button-close
+            .frame-button-max
+            .frame-button-min
+          .frame-browser-image
+            %img{:src => "http://cdn.pins.ms/earth_html/showcase.png", :alt => ""}/
+  .separator-shadow-top.above-screenshot-shadow
+    %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-top.png", :alt => ""}/
+.area-content
+  .container
+    .separator-shadow-top.sub-screenshot-shadow
+      %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-top.png", :alt => ""}/
+    .iconed-features.lift-on-hover.style-1
+      .row
+        .col-md-4
+          .iconed-feature
+            .feature-icon-w
+              %i.icon-eye-open
+            %h4 Responsive Layout
+            %p Works perfectly on everything from desktops to mobile devices.
+            .btn-show-on-parent-hover
+              %a.read-more-link{:href => "#"} Read More
+        .col-md-4
+          .iconed-feature
+            .feature-icon-w
+              %i.icon-cog
+            %h4 Unlimited Colors
+            %p Theme comes with multiple predefined colors.
+            .btn-show-on-parent-hover
+              %a.read-more-link{:href => "#"} Read More
+        .col-md-4
+          .iconed-feature
+            .feature-icon-w
+              %i.icon-leaf
+            %h4 Modern Look
+            %p Clean and simple design is what people want nowadays.
+            .btn-show-on-parent-hover
+              %a.read-more-link{:href => "#"} Read More
+    .separator-shadow-bottom.bottom-margin
+      %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-bottom.png", :alt => ""}/
+    .row.bottom-margin
+      .col-md-5
+        %h2.header-lined Wrappers for images
+        %ul.list-checkmarked.text-bigger
+          %li This theme comes with a set of amazin wrappers for your images. If you are a web designer and want to showcase your websites - there is nothing better on a market than theme Earth.
+          %li Simply wrap the image with couple lines of html and you will have a gorgeous looking browser frame and a magnifiyng glass for showcasing your projects details.
+        / %a.btn.btn-default{:href => "#"} Show me Example
+      .col-md-1
+      .col-md-6
+        .relative-w
+          .loupe.loupe-left.loupe-large.animated-when-visible{ "data-animation-type" => "fadeInLeft" }
+            %img{:src => "http://cdn.pins.ms/earth_html/showcase2.png", :alt => ""}/
+          .frame-browser.animated-when-visible{ "data-animation-type" => "bounceInRight" }
+            .frame-buttons
+              .frame-button-close
+              .frame-button-max
+              .frame-button-min
+            .frame-browser-image
+              %img{:src => "http://cdn.pins.ms/earth_html/showcase2.png", :alt => ""}/
+    .separator-shadow-top.bottom-margin
+      %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-top.png", :alt => ""}/
+    .slogan.text-center
+      %h2.header-highlighted Great for Blog, Portfolio, Company Website and more
+      %p Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.
+      .slogan-buttons
+        %a.btn.btn-primary.btn-cta.btn-lg.animated.swing{:href => "#"}
+          Purchase Theme Now
+    .separator-shadow-bottom.bottom-margin
+      %img{:src => "<!-- $colorImagesPath -->shadow-separator-wide-bottom.png", :alt => ""}/
+    .pull-right.carousel-top-controls
+      %a{"data-slide" => "prev", :href => "#carousel-works"}
+        %span.icon-angle-left
+      %a{"data-slide" => "next", :href => "#carousel-works"}
+        %span.icon-angle-right
+    %h2#anchorWorks.header-lined Recent Works Slider
+
+    #carousel-works.carousel.slide.carousel-with-animated-content
+      / Wrapper for slides
+      .carousel-inner
+        .item.active
+          .row
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/31752/screenshots/1214482/my-pen-and-well.png", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/3460/screenshots/1211079/bus_illy_1x.png", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/73492/screenshots/1210682/potes_1x.jpg", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+        .item
+          .row
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/73492/screenshots/1210682/potes_1x.jpg", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/18461/screenshots/1211161/rd-pattern.png", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+            .col-md-4
+              .portfolio-item.portfolio-style-3.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInY" }
+                .frame-browser
+                  %figure
+                    %img{:src => "http://dribbble.s3.amazonaws.com/users/23569/screenshots/1212234/prince_ink_co_long_live_print_1x.png", :alt => ""}/
+                    %figcaption
+                      %h5.fp-title
+                        %a{:href => "portfolio-single.html"} Color Picker
+                      .fp-content Web Development
+                      .fp-buttons
+                        %a.btn.btn-default.btn-sm.fp-details-btn{:href => "portfolio-single.html"}
+                          %i.icon-file-text-alt
+                          View Details
+                        %a.btn.btn-default.btn-sm.fp-lightbox-btn.swipebox{:href => "http://cdn.pins.ms/earth_html/unsplash.jpg", :title => "Lightbox Example"}
+                          %i.icon-zoom-in
+                          View Bigger
+    .block-lined-over
+      %a.continue-reading-link.pull-right{:href => "portfolio.html"}
+        %i.icon-th
+        View All
+    %h2#anchorClients.header-lined.has-sub-header.text-center Our Clients
+    %h4.sub-lined-header.less-margin.text-center Our clients love us! You are welcome to become one of them.
+    .clients
+      .row.bottom-margin
+        .col-md-2
+          %img.animated-when-visible{ "data-animation-type" => "rotateInUpLeft", :src => "<!-- $imagesPath -->clients/client-6.png", :alt => ""}/
+        .col-md-2
+          %img.animated-when-visible.delay-animation-one{ "data-animation-type" => "rotateInUpLeft", :src => "<!-- $imagesPath -->clients/client-3.png", :alt => ""}/
+        .col-md-2
+          %img.animated-when-visible.delay-animation-two{ "data-animation-type" => "rotateInUpLeft", :src => "<!-- $imagesPath -->clients/client-4.png", :alt => ""}/
+        .col-md-2
+          %img.animated-when-visible.delay-animation-two{ "data-animation-type" => "rotateInUpRight", :src => "<!-- $imagesPath -->clients/client-5.png", :alt => ""}/
+        .col-md-2
+          %img.animated-when-visible.delay-animation-one{ "data-animation-type" => "rotateInUpRight", :src => "<!-- $imagesPath -->clients/client-3.png", :alt => ""}/
+        .col-md-2
+          %img.animated-when-visible{ "data-animation-type" => "rotateInUpRight", :src => "<!-- $imagesPath -->clients/client-6.png", :alt => ""}/
+  .highlight-content.bottom-margin.light
+    #carousel-testimonials.carousel.slide
+      / Indicators
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#carousel-testimonials"}
+        %li{"data-slide-to" => "1", "data-target" => "#carousel-testimonials"}
+      / Wrapper for slides
+      .carousel-inner
+        .item.active
+          .container
+            .testimonial
+              .testimonial-icon
+                %i.icon-quote-left
+              %p "This is an absolutely beautiful template, easy to work with, easy to customize, lots of feature. I am glad I bought it and I will definitely recommend it to my freiends and coworkers!"
+              .testimonial-by Thomas Mayers - Yorkshire Foundation
+        .item
+          .container
+            .testimonial
+              .testimonial-icon
+                %i.icon-quote-left
+              %p "This is an absolutely beautiful template, easy to work with, easy to customize, lots of feature. I am glad I bought it and I will definitely recommend it to my freiends and coworkers!"
+              .testimonial-by Thomas Mayers - Yorkshire Foundation
+      / Controls
+      %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-testimonials"}
+        %span.icon-prev
+      %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-testimonials"}
+        %span.icon-next
+  .container
+    %h2#anchorFeatures.header-lined.has-sub-header.text-center More Features
+    %h4.sub-lined-header.text-center Another type of layout for your company features with icons located on the left of the description.
+    .iconed-features.style-2
+      .row
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-comments
+              .col-md-8
+                %h4 Customer Support
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-exchange
+              .col-md-8
+                %h4 Sliders Included
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-archive
+              .col-md-8
+                %h4 Awesome Icons
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+    .iconed-features.style-2
+      .row
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-desktop
+              .col-md-8
+                %h4 Responsive
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-eye-open
+              .col-md-8
+                %h4 Retina Ready
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+        .col-md-4
+          .iconed-feature
+            .row
+              .col-md-4
+                .feature-icon-w.animated-when-visible{ "data-animation-type" => "rollIn" }
+                  %i.icon-font
+              .col-md-8
+                %h4 Google Fonts
+                %p Our app enables you to manage all your work – from the most complex projects to everyday tasks.
+    .pull-right.carousel-top-controls
+      %a{"data-slide" => "prev", :href => "#carousel-posts"}
+        %span.icon-angle-left
+      %a{"data-slide" => "next", :href => "#carousel-posts"}
+        %span.icon-angle-right
+    %h2#anchorPosts.header-lined Recent Posts Slider
+
+    #carousel-posts.carousel.slide
+      / Wrapper for slides
+      .carousel-inner
+        .item.active
+          .row.bottom-margin
+            .col-md-4
+              .blog-teaser.animated-when-visible{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/108888/screenshots/1209566/shot.png", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} How to build a theme
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+            .col-md-4
+              .blog-teaser.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/43342/screenshots/1209677/sjqhub_app.jpg", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} Why is Earth a better theme
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+            .col-md-4
+              .blog-teaser.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/14827/screenshots/1193991/8.png", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} Free customer support
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate customer.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+        .item
+          .row.bottom-margin
+            .col-md-4
+              .blog-teaser.animated-when-visible{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/108888/screenshots/1209566/shot.png", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} How to build a theme
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+            .col-md-4
+              .blog-teaser.animated-when-visible.delay-animation-one{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/43342/screenshots/1209677/sjqhub_app.jpg", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} Why is Earth a better theme
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+            .col-md-4
+              .blog-teaser.animated-when-visible.delay-animation-two{ "data-animation-type" => "flipInX" }
+                %img{:src => "http://dribbble.s3.amazonaws.com/users/14827/screenshots/1193991/8.png", :alt => ""}/
+                %h3
+                  %a{:href => "post.html"} Free customer support
+                .blog-teaser-meta
+                  %span.meta-item
+                    %i.icon-time
+                    17 Nov, 2013
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-comments
+                      24
+                  %span.meta-item
+                    %a{:href => "#"}
+                      %i.icon-heart
+                      15
+                %p Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate customer.
+                %a.continue-reading-link{:href => "post.html"}  Continue Reading
+  .highlight-content.highlighted-image.bottom-margin.text-center.cta-box.light
+    .container
+      .row
+        .col-md-2
+        .col-md-8
+          %h1 Highlighted Sections
+          %p Great for attacting user attention, they come in different colors and you can set a custom background image for it.
+          %a.btn.btn-clean-light.btn-lg.animated-when-visible{ "data-animation-type" => "wobble", :href => "#"} Purchase Theme Now
+  .container
+    %h2#anchorTeam.header-lined.has-sub-header.text-center Meet the "Dream Team"
+    %h4.sub-lined-header.text-center We are a small team of designers and developers who help brands with big ideas.
+    .row.bottom-margin
+      .col-md-3
+        .team-member.animated-when-visible{ "data-animation-type" => "bounceInUp" }
+          .member-avatar
+            %img{:src => "<!-- $imagesPath -->team/member-1.jpg", :alt => ""}/
+          %h3 Lionel Messi
+          %h4 Goal Machine
+          %p Messi started the season by lifting the Spanish Supercup with Barcelona, scoring three goals and providing two assists.
+          .member-social
+            %a{:href => "#"}
+              %i.icon-facebook
+            %a{:href => "#"}
+              %i.icon-twitter
+            %a{:href => "#"}
+              %i.icon-linkedin
+            %a{:href => "#"}
+              %i.icon-envelope
+      .col-md-3
+        .team-member.animated-when-visible.delay-animation-one{ "data-animation-type" => "bounceInUp" }
+          .member-avatar
+            %img{:src => "<!-- $imagesPath -->team/member-2.jpg", :alt => ""}/
+          %h3 David Villa
+          %h4 Perfect Finisher
+          %p Messi started the season by lifting the Spanish Supercup with Barcelona, scoring three goals and providing two assists.
+          .member-social
+            %a{:href => "#"}
+              %i.icon-facebook
+            %a{:href => "#"}
+              %i.icon-twitter
+            %a{:href => "#"}
+              %i.icon-linkedin
+            %a{:href => "#"}
+              %i.icon-envelope
+      .col-md-3
+        .team-member.animated-when-visible.delay-animation-two{ "data-animation-type" => "bounceInUp" }
+          .member-avatar
+            %img{:src => "<!-- $imagesPath -->team/member-3.jpg", :alt => ""}/
+          %h3 Andres Iniesta
+          %h4 Magician
+          %p Messi started the season by lifting the Spanish Supercup with Barcelona, scoring three goals and providing two assists.
+          .member-social
+            %a{:href => "#"}
+              %i.icon-facebook
+            %a{:href => "#"}
+              %i.icon-twitter
+            %a{:href => "#"}
+              %i.icon-linkedin
+            %a{:href => "#"}
+              %i.icon-envelope
+      .col-md-3
+        .team-member.animated-when-visible.delay-animation-three{ "data-animation-type" => "bounceInUp" }
+          .member-avatar
+            %img{:src => "<!-- $imagesPath -->team/member-4.jpg", :alt => ""}/
+          %h3 Xavi Hernandez
+          %h4 Another Magician
+          %p Messi started the season by lifting the Spanish Supercup with Barcelona, scoring three goals and providing two assists.
+          .member-social
+            %a{:href => "#"}
+              %i.icon-facebook
+            %a{:href => "#"}
+              %i.icon-twitter
+            %a{:href => "#"}
+              %i.icon-linkedin
+            %a{:href => "#"}
+              %i.icon-envelope
+    .row.bottom-margin
+      .col-md-7
+        %h2.header-lined Tabs
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#home"}
+              %i.icon-eye-open
+              Retina Ready
+          %li
+            %a{"data-toggle" => "tab", :href => "#profile"}
+              %i.icon-desktop
+              Responsive Design
+          %li.visible-lg
+            %a{"data-toggle" => "tab", :href => "#messages"}
+              %i.icon-picture
+              Portfolio Ready
+        .tab-content
+          #home.tab-pane.active
+            %h4.header-lined.less-margin Attention to details
+            %p Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
+          #profile.tab-pane
+            %h4 Customer Support
+            %p Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables. Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing.
+          #messages.tab-pane
+            %h4 Responsive Design
+            %p Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services. Seamlessly empower fully researched growth strategies and interoperable internal or "organic" sources. Credibly innovate granular internal or "organic" sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas with optimal networks.
+      .col-md-5
+        %h2.header-lined Accordions
+        #accordion.panel-group.accordion-w
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title
+                %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                  Responsive and Retina Ready
+            #collapseOne.panel-collapse.collapse.in
+              .panel-body
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title
+                %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                  Great for your next project
+            #collapseTwo.panel-collapse.collapse
+              .panel-body
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title
+                %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                  SEO Optimized for better rankings
+            #collapseThree.panel-collapse.collapse
+              .panel-body
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+    %h2#anchorPricing.header-lined.has-sub-header.text-center Pricing Tables
+    %h4.sub-lined-header.text-center We offer multiple pricing plans to go with your new account.
+    .pricing-table-columns.bottom-margin
+      .row
+        .col-md-4
+          .plan-column
+            %h4 Basic
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .plan-price
+              $59
+              %span /month
+            .separator-shadow-bottom
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-bottom.png"}/
+            %ul
+              %li
+                %strong Unlimited
+                Collaborators
+              %li
+                %strong 5Gb
+                Storage
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .button-w
+              %a.btn.btn-primary{:href => "#"} Choose this Plan
+        .col-md-4
+          .plan-column.highlight
+            %h4 Professional
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .plan-price
+              $99
+              %span /month
+            .separator-shadow-bottom
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-bottom.png"}/
+            %ul
+              %li
+                %strong Unlimited
+                Collaborators
+              %li
+                %strong 15Gb
+                Storage
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .button-w
+              %a.btn.btn-primary{:href => "#"} Choose this Plan
+        .col-md-4
+          .plan-column
+            %h4 Advanced
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .plan-price
+              $199
+              %span /month
+            .separator-shadow-bottom
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-bottom.png"}/
+            %ul
+              %li
+                %strong Unlimited
+                Collaborators
+              %li
+                %strong 30Gb
+                Storage
+            .separator-shadow-top
+              %img{:alt => "", :src => "<!-- $colorImagesPath -->shadow-separator-narrow-top.png"}/
+            .button-w
+              %a.btn.btn-primary{:href => "#"} Choose this Plan
+    %h2.header-lined.has-sub-header.text-center Our Skills
+    %h4.sub-lined-header.text-center We can do more than you might think, we are awesome and we can make you awewsome.
+    .row
+      .col-md-3
+        .skill
+          %input.dial{:type => "text", :value => "90", "data-linecap" => "round", "data-thickness" => ".2", "data-fgColor" => "#87ceeb" }/
+          %h4 Web Design
+      .col-md-3
+        .skill
+          %input.dial{:type => "text", :value => "70", "data-linecap" => "round", "data-thickness" => ".2", "data-fgColor" => "#34bab3" }/
+          %h4 Graphic Design
+      .col-md-3
+        .skill
+          %input.dial{:type => "text", :value => "85", "data-linecap" => "round", "data-thickness" => ".2", "data-fgColor" => "#e3ce9f" }/
+          %h4 Photoshop
+      .col-md-3
+        .skill
+          %input.dial{:type => "text", :value => "65", "data-linecap" => "round", "data-thickness" => ".2", "data-fgColor" => "#d74681" }/
+          %h4 SEO / Marketing
+<!-- @include _footer -->

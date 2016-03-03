@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+
+  <link rel='stylesheet' href='../../assets/css/plugins/fullcalendar.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/bootstrap.datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/chosen.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.timepicker.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/daterangepicker-bs3.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/colpick.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/dropzone.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.handsontable.full.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jscrollpane.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.icons.css'>
+<link rel='stylesheet' href='../../assets/css/app.css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
+
+  <link href="../../assets/favicon.ico" rel="shortcut icon">
+  <link href="../../assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+  <![endif]-->
+
+  <title>Responsive Admin template based on Bootstrap 3</title>
+
+</head>
+
+<body class="glossed">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42863888-4', 'pinsupreme.com');
+  ga('send', 'pageview');
+
+</script>
+<div class="all-wrapper fixed-header left-menu">
+  <div class="page-header">
+  <div class="header-links hidden-xs">
+    <div class="top-search-w pull-right">
+      <input type="text" class="top-search" placeholder="Search"/>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-bolt"></i> User Alerts <span class="badge alert-animated">5</span></a>
+
+      <ul class="dropdown-menu dropdown-inbar dropdown-wide">
+        <li><a href="#"><span class="label label-warning">1 min</span> <i class="fa fa-bell"></i> New Mail Received</a></li>
+        <li><a href="#"><span class="label label-warning">4 min</span> <i class="fa fa-fire"></i> Server Crash</a></li>
+        <li><a href="#"><span class="label label-warning">12 min</span> <i class="fa fa-flag-o"></i> Pending Alert</a></li>
+        <li><a href="#"><span class="label label-warning">15 min</span> <i class="fa fa-smile-o"></i> User Signed Up</a></li>
+      </ul>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-cog"></i> Settings</a>
+
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <a href="#" class="header-link clearfix" data-toggle="dropdown">
+        <div class="avatar">
+          <img src="../../assets/images/avatar-small.jpg" alt="">
+        </div>
+        <div class="user-name-w">
+          Mirra Ariesta <i class="fa fa-caret-down"></i>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <a class="logo hidden-xs" href="index.html"><i class="fa fa-rocket"></i></a>
+  <a class="menu-toggler" href="#"><i class="fa fa-bars"></i></a>
+  <h1>E-TEFL</h1>
+</div>
+  <div class="side">
+  <div class="sidebar-wrapper">
+ <ul>
+    <li>
+      <a href="index.html" data-toggle="tooltip" data-placement="right" title="Dashboard" data-original-title="Dashboard">
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+	<li class='current'>
+      <a class='current' href="v_learnListening.html" data-toggle="tooltip" data-placement="right" title="Learning" data-original-title="Learning">
+		<i class="fa fa-folder-open-o"></i>
+      </a>
+    </li>
+	<li>
+      <a href="v_roles.html" data-toggle="tooltip" data-placement="right" title="Privileges" data-original-title="Hak Akses">
+		<!-- Untuk data yang harus di konfirmasi admin-->
+		<span class="badge">3</span><i class="fa fa-user"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_kategori.html" data-toggle="tooltip" data-placement="right" title="Data Master" data-original-title="Data Master">
+        <span class="badge">8</span><i class="fa fa-file-text-o"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_konversiNilai.html" data-toggle="tooltip" data-placement="right" title="Konversi Nilai" data-original-title="UI Elements">
+        <span class="badge">1</span><i class="fa fa-columns"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_scheduleQuiz.html" data-toggle="tooltip" data-placement="right" title="Schedule Quiz" data-original-title="Quiz">
+        <span class="badge">2</span><i class="fa fa-calendar"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_monitoring.html" data-toggle="tooltip" data-placement="right" title="Monitoring" data-original-title="Tables">
+        <i class="fa fa-bar-chart-o"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+  <div class="sub-sidebar-wrapper">
+  <ul>
+    <li><a href="v_learnListening.html"> Strategy Listening</a></li>
+	<li><a href="v_learnStructure.html"> Strategy Structure</a></li>
+    <li class='current'><a  class='current' href="v_learnReading.html"> Strategy Reading</a></li>
+  </ul>
+</div>
+  </div>
+  <div class="main-content">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Bread</a></li>
+      <li><a href="#">Crumbs</a></li>
+      <li class="active">Example</li>
+    </ol>
+   
+    <div class="widget widget-blue">
+      <div class="widget-title">
+		 <h3> Strategy Reading</h3>
+      </div>
+	   <div class="widget-content">
+        <ul class="alerts-list">
+          <li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 1 : </strong>  <a href="#" class="alert-link">Answers Main Idea Correctly</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 1 : </strong> Main Idea Question</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i> What is the <strong>topic</strong> of the passage?</i><br><i class="fa fa-key"></i><i> What is the <strong>subject</strong> of the passage?</i><br><i class="fa fa-key"></i><i> What is the <strong>main idea</strong> of the passage?</i><br>
+									<i class="fa fa-key"></i><i> What is the author's <strong>main point</strong> in the passage?</i><br><i class="fa fa-key"></i><i> With what is the author <strong>primarily concerned</strong>?</i><br><i class="fa fa-key"></i><i> Which of the following would be the <strong>best title</strong>?</i>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answer to this type of question can generally be determined by looking at the first sentence of each paragraph.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Read the first line of paragraph.<br>
+								  <i class="fa fa-key"></i> Look for a common theme or idea in the first line.<br>
+								  <i class="fa fa-key"></i> Pass your eyes quickly over the rest of the passage to check that you have really found the topic sentence(s).<br>
+								  <i class="fa fa-key"></i> Eliminate any definitely wrong answers and choose the best answer from the remaining choices.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				  <li>
+					<div>
+						<table align="justify">						
+						  <tbody>
+							<tr><td colspan=3><strong>Example : </strong></td></tr>
+							<tr>
+							  <td rowspan=3></td><td><font size=4>
+							  In the philosophy of John Dewey, a sharp distinction is 
+							</td></tr>
+							<tr><td><font size=4>
+								made between <u>intelligence</u> and <u>reasoning</u>. According to 
+							</td></tr>
+							<tr><td><font size=4>
+								Dewey, intelligence is the only absolute way to achieve a
+							</td></tr>
+							<tr><td width=7%>Line</td><td><font size=4>
+								balance between realism and idealism, between practicality
+							</td></tr>
+							<tr><td>(5)</td><td><font size=4>
+								and wisdom of life. Intelligence involves "interacting with
+							</td></tr>
+							<tr><td rowspan=3 width=7%></td><td><font size=4>
+								other things and knowing them," while reasoning is merely the 
+							</td></tr>
+							<tr><td><font size=4>
+								act of an observer,"...a mind that beholds or <u>grasps</u> objects
+							</td></tr>
+							<tr><td><font size=4>
+								outside the world of things..." With reasoning, a level of
+							</td></tr>
+							<tr><td width=7%>Line</td><td><font size=4>
+								mental certainty can be achieved, but it is through intelligence
+							</td></tr>
+							<tr><td>(10)</td><td><font size=4>
+								that control is taken of events that shape one's life.
+							</td></tr>
+						  </tbody>
+						</table>
+						<br><br>
+						<table>						
+						  <tbody>
+							<tr>
+								<td colspan=2>What is the <strong>topic</strong> of this passage?</td>
+							</tr>
+							<tr>
+								<td>(A)</td><td>The intelligence of John Dewey</td>
+							</tr>
+							<tr>
+								<td>(B)</td><td>Distinctions made by John Dewey</td>
+							</tr>
+							<tr>
+								<td>(C)</td><td>Dewey's ideas on the ability to reason</td>
+							</tr>
+							<tr>
+								<td>(D)</td><td>How <u>intelligence</u> differs from <u>reasoning</u> in Dewey's works</td>
+							</tr>
+						  </tbody>
+						</table>
+						<br><br>This question asks about the <i>topic</i> of the passage. Because this passage has only one paragraph, you should look at the first sentence of the passage to answer this question. The first sentence of this passage discusses a distinction between the ideas of <i>intelligence</i> and <i>reasoning</i> in the philosophy of John Dewey, so this is probably the topic. A quick check of the rest of the sentences in the passage confirms that the topic is in fact the difference between <i>intelligence</i> and <i>reasoning</i>. Now you should check each of the answers to determine which one comes closest to the topic that you have determined. Answer (A) mentions only intelligence, so it is not the topic. Answer (B) mentions distinctions that John Dewey made, but it does not say specifically what type of distinctions. Answer (C) mentions only reasoning, so answer (C) is incomplete. The best answer is therefore (D), the idea of <i>how intelligence differs from reasoning</i> comes from the first sentence of the passage, which mentions <i>a sharp distinction ... between intelligence and reasoning.</i>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 2 : </strong> <a href="#" class="alert-link">Recognize the Organization of Ideas</a>.
+            </div>
+          <div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 2 : </strong> Organization of Ideas</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td rowspan=2><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i>What is the <strong>topic</strong> of the passage?</i><br><i class="fa fa-key"></i><i>What is the <strong>subject</strong> of the passage?</i><br><i class="fa fa-key"></i><i>What is the <strong>main idea</strong> of the passage?</i><br>
+									<i class="fa fa-key"></i><i>What is the author's <strong>main point</strong> in the passage?</i><br><i class="fa fa-key"></i><i>With what is the author <strong>primarily concerned</strong>?</i><br><i class="fa fa-key"></i><i>Which of the following would be the <strong>best title</strong>?</i>
+							  </td>
+							</tr>
+							<tr>
+								<td>on computer test only</td>
+								<td><strong>Click on the paragraph</strong> that ...</td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answer to this type of question can generally be determined by looking at the first sentence of each paragraph.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Read the first line of each paragraph.<br>
+								  <i class="fa fa-key"></i> Look for words that show relationships among the paragraphs.<br>
+								  <i class="fa fa-key"></i> Choose the answer that best expresses the relationship.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 3 : </strong> <a href="#" class="alert-link">Answer Stated Detail Questions Correctly</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 3 : </strong> Stated Detail Questions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td rowspan=2><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i><strong> According</strong> to the passage,...</i><br><i class="fa fa-key"></i><i> It is<strong> stated</strong> in the passage...</i><br>
+								  <i class="fa fa-key"></i><i> The passage <strong>indicates</strong> that...</i><br><i class="fa fa-key"></i><i> Which of the following is <strong>true</strong>?</i>
+							  </td>
+							</tr>
+							<tr>
+								<td>on computer test only</td>
+								<td><strong>Click on the drawing</strong> that ...</td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answer to these questions are found in order in the passage.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Choose a key word in the question.<br>
+								  <i class="fa fa-key"></i> Skim in the appropriate part of the passage for the key word or idea.<br>
+								  <i class="fa fa-key"></i> Read the sentence that contains the key word or idea carefully<br>
+								  <i class="fa fa-key"></i> Eliminate the definitely wrong answers and choose the best answer from the remaining choices.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+          <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 4 : </strong> <a href="#" class="alert-link">Find "Unstated" Details</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 4 : </strong> Find "Unstated" Details</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i> Which of the following is <strong>not stated</strong>...?</i><br><i class="fa fa-key"></i><i> Which of the following is <strong>not mentioned</strong>...?</i><br>
+								  <i class="fa fa-key"></i><i> Which of the following is <strong>not discussed</strong>...?</i><br><i class="fa fa-key"></i><i> All of the following true <strong>except</strong>...?</i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answer to these questions are found in order in the passage.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Choose a key word in the question.<br>
+								  <i class="fa fa-key"></i> Scan the appropriate place in the passage for the key word (or related idea).<br>
+								  <i class="fa fa-key"></i> Read the sentence that contains the key word or idea carefully.<br>
+								  <i class="fa fa-key"></i> Look for answers that are definitely true according to the passage. Eliminate those answers.<br>
+								  <i class="fa fa-key"></i> Choose the answer that is not true or not discussed in the passage.
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 5 : </strong> <a href="#" class="alert-link">Find Pronoun Referents</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 5 : </strong> Pronoun Referents</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td rowspan=2><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on paper test only</td>
+							  <td>The <strong>pronoun</strong> "..." in line X <strong>refers</strong> to which of the following?</td>
+							</tr>
+							<tr>
+								<td>on computer test only</td>
+								<td>Look at the word X. Click on the word or phrase that X <strong>refers</strong> to.</td>
+							</tr>
+							<tr>
+							  <td rowspan=2><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td>on paper test only</td>
+							  <td>The line where the pronoun is located is given in the question. The noun that the pronoun refers to is generally found <i>before</i> the pronoun.</td>
+							</tr>
+							<tr>
+								<td>on computer test only</td>
+								<td>The pronoun is highlighted in the passage. The noun that the pronoun refers to is generally found <i>before</i> the pronoun.</td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Locate the pronoun in the passage.<br>
+								  <i class="fa fa-key"></i> Look the before the pronoun for nouns that agree with the pronoun.<br>
+								  <i class="fa fa-key"></i> Try each of the nouns in the context in place of the pronoun.<br>
+								  <i class="fa fa-key"></i> Eliminate any definitely wrong answers and choose the best answer from the remaining choices.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+					
+				
+				</ul>
+			  </div>
+			</div>
+			</li>
+		   <li>
+		   <div class="alert alert-info alert-dismissable">
+			<strong>Strategy 6 : </strong> <a href="#" class="alert-link">Answer Implied Detail Questions Correctly</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 6 : </strong> Implied Detail Questions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i> It is <strong>implied</strong> in the passage that...</i><br><i class="fa fa-key"></i><i> It can be<strong>inferred</strong> from the passage that...</i><br>
+							  <i class="fa fa-key"></i><i> It is most <strong>likely</strong> that...</i><br><i class="fa fa-key"></i><i> What <strong>probably</strong> happened...?</i>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answer to these questions are found in order in the passage.</td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Choose a key word in the passage.<br>
+								  <i class="fa fa-key"></i> Scan the passage for the key word (or a related idea).<br>
+								  <i class="fa fa-key"></i> Carefully read the sentence that contains the key word.<br>
+								  <i class="fa fa-key"></i> Look for an answer that could be true, according to that sentence.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 7 : </strong> <a href="#" class="alert-link">Answer Transition Questions Correctly</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 7 : </strong> Transition Questions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td><i class="fa fa-key"></i><i> The paragraph <strong>preceding</strong> probably...<br>What is the most likely in the paragraph <strong>following</strong> the passage?</i>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>The answers can generally be found in the <i>first line</i> of the passage for a <i>preceding</i> question. The answer can generally be found in the <i>last line</i> for a <i>following</i> question.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Read the <i>first line</i> for a <i>preceding</i> question.<br>
+								  <i class="fa fa-key"></i> Read the <i>last line</i> for a <i>following</i> question.<br>
+								  <i class="fa fa-key"></i> Draw a conclusion about what comes <i>before</i> or <i>after</i><br>
+								  <i class="fa fa-key"></i> Choose the answer that is reflected in the <i>first</i> or <i>last</i> line of the question.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 8 : </strong> <a href="#" class="alert-link">Find Definitions from Structural Clues</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 8 : </strong> Structural Clues</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td>
+							  <i class="fa fa-key"></i><i> What is the <strong>meaning</strong> of "X" in line "Y"?</i><br>
+							  <i class="fa fa-key"></i><i> The word "X" in line "Y" is <strong>closest in meaning</strong> to...</i><br>
+							  <i class="fa fa-key"></i><i> The word "X" in line "Y" <strong>could best be replaced</strong> by...</i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td rowspan=3><strong>TYPES OF CLUES</strong></td>
+							  <td>punctuation</td>
+							  <td>comma, parenthess, dashes</td>
+							</tr>
+							<tr>
+							  <td>restatement</td>
+							  <td>or, that is, in other words, i.e</td>
+							</tr>
+							<tr>
+							  <td>example</td>
+							  <td>such as, for example, e.g.</td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2>
+								 Information to help you determine what something means will generally be found after the punctuation clue, the restatement clue, or the example clue.
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Find the word in the passage.<br>
+								  <i class="fa fa-key"></i> Locate any structural clues.<br>
+								  <i class="fa fa-key"></i> Read the part of the passage after the structural clue carefully.<br>
+								  <i class="fa fa-key"></i> Eliminate any definitely wrong answers and choose the best answer from the remaining choices.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 9 : </strong> <a href="#" class="alert-link">Determine Meanings from Word Parts</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 9 : </strong> A short list of word Parts</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						 <thead>
+							<tr>
+							  <th>PART</th>
+							  <th>MEANING</th>
+							  <th>EXAMPLE</th>
+							  <th></th>
+							  <th>PART</th>
+							  <th>MEANING</th>
+							  <th>EXAMPLE</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>CONTRA</td>
+							  <td>(against)</td>
+							  <td><i>contra</i>st</td>
+							  <td></td>
+							  <td>DIC</td>
+							  <td>(say)</td>
+							  <td><i>dic</i>tate</td>
+							</tr>
+							<tr>
+							  <td>MAL</td>
+							  <td>(bad)</td>
+							  <td><i>mal</i>content</td>
+							  <td></td>
+							  <td>DOMIN</td>
+							  <td>(master)</td>
+							  <td><i>domin</i>ant</td>
+							</tr>
+							<tr>
+							  <td>MIS</td>
+							  <td>(error)</td>
+							  <td><i>mis</i>take</td>
+							  <td></td>
+							  <td>JUD</td>
+							  <td>(judge)</td>
+							  <td><i>judg</i>ment</td>
+							</tr>
+							<tr>
+							  <td>SUB</td>
+							  <td>(under)</td>
+							  <td><i>sub</i>way</td>
+							  <td></td>
+							  <td>MOR</td>
+							  <td>(death)</td>
+							  <td><i>mor</i>tal</td>
+							</tr>
+							<tr>
+							  <td>DEC</td>
+							  <td>(ten)</td>
+							  <td><i>dec</i>ade</td>
+							  <td></td>
+							  <td>SPEC</td>
+							  <td>(see)</td>
+							  <td><i>spec</i>tator</td>
+							</tr>
+							<tr>
+							  <td>MULTI</td>
+							  <td>(many)</td>
+							  <td><i>multi</i>ple</td>
+							  <td></td>
+							  <td>TERR</td>
+							  <td>(earth)</td>
+							  <td><i>terr</i>itory</td>
+							</tr>
+							<tr>
+							  <td>SOL</td>
+							  <td>(one)</td>
+							  <td><i>sol</i>o</td>
+							  <td></td>
+							  <td>VER</td>
+							  <td>(turn)</td>
+							  <td>di<i>ver</i>t</td>
+							</tr>
+							<tr>
+							  <td>TRI</td>
+							  <td>(three)</td>
+							  <td><i>tri</i>ple</td>
+							  <td></td>
+							  <td>VIV</td>
+							  <td>(live)</td>
+							  <td>re<i>viv</i>e</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 10 : </strong> <a href="#" class="alert-link">Use Context to Determine Meanings of Difficult Words</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 10 : </strong> Vocabulary Questions Containing Difficult Words</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td>
+								  <i class="fa fa-key"></i><i> What is the <strong>meaning of</strong> "X" in line Y?</i><br>
+								  <i class="fa fa-key"></i><i> The word "X" in line Y? is <strong>closest in meaning to...</strong></i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>Information to help you understand the meaning of an unknown word can often be found in the context surrounding the unknown word.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Find the word in the passage.<br>
+								  <i class="fa fa-key"></i> Read the sentence that contains the word carefully.<br>
+								  <i class="fa fa-key"></i> Look for context clues to help you understand the meaning.<br>
+								  <i class="fa fa-key"></i> Choose the answer that the context indicates.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 11 : </strong> <a href="#" class="alert-link">Use Context to Determine Meanings of Simple Words</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 11 : </strong> Vocabulary Question Containing Simple Word</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td>
+								  <i class="fa fa-key"></i><i> What is the <strong>meaning of</strong> "X" in line Y?</i><br>
+								  <i class="fa fa-key"></i><i> The word "X" in line Y? is <strong>could be replaced</strong> by...</i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td colspan=2><strong>Information to help you understand the secondary meaning of a simple word can often be found in the context surrounding word.</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Find the word in the passage.<br>
+								  <i class="fa fa-key"></i> Read the sentence that contains the word carefully.<br>
+								  <i class="fa fa-key"></i> Look for context clues to help you understand the meaning.<br>
+								  <i class="fa fa-key"></i> Choose the answer that context indicates.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 12 : </strong> <a href="#" class="alert-link">Determine Where Specific Information is found</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 12 : </strong> Questions About Where in the Pasage</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on paper test only</td>
+							  <td><i class="fa fa-key"></i><i><strong> Where</strong> in the passage?</i>
+							  </td>
+							</tr>
+							<tr>
+							  <td><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td>on paper test only</td>
+							  <td>The answer can be in any of the lines listed in the answers to the question.</td>
+							</tr>
+							<tr>
+							  <td><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td colspan=2>
+								  <i class="fa fa-key"></i> Choose a key word or idea in the question.<br>
+								  <i class="fa fa-key"></i> Skim the appropriate part(s) of the passage looking for the key word or idea.<br>
+								  <i class="fa fa-key"></i> Choose the answer that contains the key word or idea.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>				  
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 13 : </strong> <a href="#" class="alert-link">Determine the Tone, Purpose, or Course</a>.
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 13 : </strong> Tone, Purpose, or Course</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>HOW TO IDENTIFY THE QUESTION</strong></td>
+							  <td>on both paper and computer tests</td>
+							  <td>
+									<i class="fa fa-key"></i><i> What is the <strong>tone</strong> of the passage?</i><br>
+									<i class="fa fa-key"></i><i> What is the author's <strong>purpose</strong> in this passage?</i><br>
+									<i class="fa fa-key"></i><i> In which <strong>course</strong> would this reading be assigned?</i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td rowspan=3><strong>WHERE TO FIND THE ANSWER</strong></td>
+							  <td><i>tone</i></td>
+							  <td>Look for clues throughout the passage that show if the author is showing some emotion rather than just presenting facts.</td>
+							</tr>
+							<tr>
+							  <td><i>purpose</i></td>
+							  <td>Draw a conclusion about the purpose from the main idea and supporting ideas.</td>
+							</tr>
+							<tr>
+							  <td><i>course</i></td>
+							  <td>Draw a conclusion about the purpose from the topic of the passage and the supporting ideas.</td>
+							</tr>
+							<tr>
+							  <td rowspan=3><strong>HOW TO ANSWER THE QUESTION</strong></td>
+							  <td><i>tone</i></td>
+							  <td>
+								<i class="fa fa-key"></i> Skim the passage looking for clues that the author is showing some emotion.<br>
+								<i class="fa fa-key"></i> Choose the answer that identifies the emotion.<br>
+							  </td>
+							</tr>
+							<tr>
+							  <td><i>purpose</i></td>
+							   <td>
+								<i class="fa fa-key"> Study the main idea in the topic sentence and the details used to support the main idea.</i><br>
+								<i class="fa fa-key"> Draw a conclusion about the purpose.</i><br>
+							  </td>
+							</tr>
+							<tr>
+							  <td><i>course</i></td>
+							   <td>
+								<i class="fa fa-key"></i> Study the main idea in the topic sentence and the details used to support the main idea.</i><br>
+								<i class="fa fa-key"></i> Draw a conclusion about the course.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src='../../assets/js/plugins/jquery.pnotify.js'></script>
+<script src='../../assets/js/plugins/jquery.sparkline.min.js'></script>
+<script src='../../assets/js/plugins/mwheelIntent.js'></script>
+<script src='../../assets/js/plugins/mousewheel.js'></script>
+<script src='../../assets/js/bootstrap/tab.js'></script>
+<script src='../../assets/js/bootstrap/dropdown.js'></script>
+<script src='../../assets/js/bootstrap/tooltip.js'></script>
+<script src='../../assets/js/bootstrap/collapse.js'></script>
+<script src='../../assets/js/bootstrap/scrollspy.js'></script>
+<script src='../../assets/js/plugins/bootstrap-datepicker.js'></script>
+<script src='../../assets/js/bootstrap/transition.js'></script>
+<script src='../../assets/js/plugins/jquery.knob.js'></script>
+<script src='../../assets/js/plugins/jquery.flot.min.js'></script>
+<script src='../../assets/js/plugins/fullcalendar.js'></script>
+<script src='../../assets/js/plugins/datatables/datatables.min.js'></script>
+<script src='../../assets/js/plugins/chosen.jquery.min.js'></script>
+<script src='../../assets/js/plugins/jquery.timepicker.min.js'></script>
+<script src='../../assets/js/plugins/daterangepicker.js'></script>
+<script src='../../assets/js/plugins/colpick.js'></script>
+<script src='../../assets/js/plugins/moment.min.js'></script>
+<script src='../../assets/js/plugins/datatables/bootstrap.datatables.js'></script>
+<script src='../../assets/js/bootstrap/modal.js'></script>
+<script src='../../assets/js/plugins/raphael-min.js'></script>
+<script src='../../assets/js/plugins/morris-0.4.3.min.js'></script>
+<script src='../../assets/js/plugins/justgage.1.0.1.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskedinput.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskmoney.js'></script>
+<script src='../../assets/js/plugins/summernote.js'></script>
+<script src='../../assets/js/plugins/dropzone-amd-module.js'></script>
+<script src='../../assets/js/plugins/jquery.validate.min.js'></script>
+<script src='../../assets/js/plugins/jquery.bootstrap.wizard.min.js'></script>
+<script src='../../assets/js/plugins/jscrollpane.min.js'></script>
+<script src='../../assets/js/application.js'></script>
+
+<script src='../../assets/js/template_js/table.js'></script>
+
+
+</body>
+
+</html>

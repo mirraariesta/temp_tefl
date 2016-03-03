@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+
+  <link rel='stylesheet' href='../../assets/css/plugins/fullcalendar.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/bootstrap.datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/chosen.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.timepicker.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/daterangepicker-bs3.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/colpick.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/dropzone.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.handsontable.full.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jscrollpane.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.icons.css'>
+<link rel='stylesheet' href='../../assets/css/app.css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
+
+  <link href="../../assets/favicon.ico" rel="shortcut icon">
+  <link href="../../assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+  <![endif]-->
+
+  <title>Responsive Admin template based on Bootstrap 3</title>
+
+</head>
+
+<body class="glossed">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42863888-4', 'pinsupreme.com');
+  ga('send', 'pageview');
+
+</script>
+<div class="all-wrapper fixed-header left-menu">
+  <div class="page-header">
+  <div class="header-links hidden-xs">
+    <div class="top-search-w pull-right">
+      <input type="text" class="top-search" placeholder="Search"/>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-bolt"></i> User Alerts <span class="badge alert-animated">5</span></a>
+
+      <ul class="dropdown-menu dropdown-inbar dropdown-wide">
+        <li><a href="#"><span class="label label-warning">1 min</span> <i class="fa fa-bell"></i> New Mail Received</a></li>
+        <li><a href="#"><span class="label label-warning">4 min</span> <i class="fa fa-fire"></i> Server Crash</a></li>
+        <li><a href="#"><span class="label label-warning">12 min</span> <i class="fa fa-flag-o"></i> Pending Alert</a></li>
+        <li><a href="#"><span class="label label-warning">15 min</span> <i class="fa fa-smile-o"></i> User Signed Up</a></li>
+      </ul>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-cog"></i> Settings</a>
+
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <a href="#" class="header-link clearfix" data-toggle="dropdown">
+        <div class="avatar">
+          <img src="../../assets/images/avatar-small.jpg" alt="">
+        </div>
+        <div class="user-name-w">
+          Mirra Ariesta <i class="fa fa-caret-down"></i>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <a class="logo hidden-xs" href="index.html"><i class="fa fa-rocket"></i></a>
+  <a class="menu-toggler" href="#"><i class="fa fa-bars"></i></a>
+  <h1>E-TEFL</h1>
+</div>
+  <div class="side">
+  <div class="sidebar-wrapper">
+ <ul>
+    <li>
+      <a href="index.html" data-toggle="tooltip" data-placement="right" title="Dashboard" data-original-title="Dashboard">
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+	<li class='current'>
+      <a class='current' href="v_learnListening.html" data-toggle="tooltip" data-placement="right" title="Learning" data-original-title="Learning">
+		<i class="fa fa-folder-open-o"></i>
+      </a>
+    </li>
+	<li>
+      <a href="v_roles.html" data-toggle="tooltip" data-placement="right" title="Privileges" data-original-title="Hak Akses">
+		<!-- Untuk data yang harus di konfirmasi admin-->
+		<span class="badge">3</span><i class="fa fa-user"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_kategori.html" data-toggle="tooltip" data-placement="right" title="Data Master" data-original-title="Data Master">
+        <span class="badge">8</span><i class="fa fa-file-text-o"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_konversiNilai.html" data-toggle="tooltip" data-placement="right" title="Konversi Nilai" data-original-title="UI Elements">
+        <span class="badge">1</span><i class="fa fa-columns"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_scheduleQuiz.html" data-toggle="tooltip" data-placement="right" title="Schedule Quiz" data-original-title="Quiz">
+        <span class="badge">2</span><i class="fa fa-calendar"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_monitoring.html" data-toggle="tooltip" data-placement="right" title="Monitoring" data-original-title="Tables">
+        <i class="fa fa-bar-chart-o"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+  <div class="sub-sidebar-wrapper">
+  <ul>
+    <li><a href="v_learnListening.html"> Strategy Listening</a></li>
+	<li class='current'><a class='current' href="v_learnStructure.html"> Strategy Structure</a></li>
+    <li><a href="v_learnReading.html"> Strategy Reading</a></li>
+  </ul>
+</div>
+  </div>
+  <div class="main-content">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Bread</a></li>
+      <li><a href="#">Crumbs</a></li>
+      <li class="active">Example</li>
+    </ol>
+   
+    <div class="widget widget-blue">
+      <div class="widget-title">
+		 <h3> Strategy Structure</h3>
+      </div>
+	   <div class="widget-content">
+        <ul class="alerts-list">
+          <li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 1 : </strong>  <a href="#" class="alert-link">Be Sure the Sentence Has a Subject and a Verb</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 1 : Be Sure the Sentence Has a Subject and a Verb</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>Subjects and Verbs</strong></td>
+							</tr>
+							<tr>
+							  <td>A <i>sentence</i> in English must have at least one <i>subject</i> and one <i>verb.</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          <li>
+          </li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 2 : </strong> <a href="#" class="alert-link">Be Careful of Objects of Prepositions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 2 : Be Careful of Objects of Prepositions</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>Object of Prepositions</strong></td>
+							</tr>
+							<tr>
+							  <td>A <i>preposition</i> is followed by noun, pronoun, gerund or noun clause that is called an <i>object of the preposition</i>. If a word is an object of a <i>preposition</i>, it is not the subject.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          <li>
+          </li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 3 : </strong> <a href="#" class="alert-link">Be Careful of Appositives</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 3 : Be Careful of Appositives</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Appositive</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=4>An <i>appositive</i> is a noun that comes before or after another noun and is generally set off from the noun with commas. If a word is an <i>appositive</i>, it is not the <i>subject</i>. The following appositive structures are both possible in English.</td>
+							</tr>
+							<tr>
+							  <td>S,<br><strong>Tom,</strong></td>
+							  <td>APP,<br><strong>a really good mechanic,</strong></td>
+							  <td>V<br><strong>is fixing</strong></td>
+							  <td><br><strong>the car.</strong></td>
+							</tr>
+							<tr>
+							  <td>APP,<br><strong>A really good mechanic,</strong></td>
+							  <td>S<br><strong>Tom</strong></td>
+							  <td>V<br><strong>is fixing</strong></td>
+							  <td><br><strong>the car.</strong></td>
+							</tr>
+							
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+          <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 4 : </strong> <a href="#" class="alert-link">Be Careful of Present Participles</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 4 : Be Careful of Present Participles</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>Present Participles</strong></td>
+							</tr>
+							<tr>
+							  <td>A <i>present participle</i> is the <i>-ing</i> form of the verb. The <i>present participle</i> can be (1) <strong>part of the verb</strong> or (2) an <strong>adjective.</strong> It is part of the verb when it is accompanied by some form of the verb <i>be</i>. It is not accompanied by some form of the verb <i>be</i>.</td>
+							</tr>
+							<tr>
+							  <td><i class="fa fa-key"></i><i> <i>1. The boy is <strong>standing</strong> in the corner.</i><br>
+								  <i class="fa fa-key"></i><i> <i>2. The boy <strong>standing</strong> in the corner was naughty.</i>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 5 : </strong> <a href="#" class="alert-link">Be Careful of Past Participles</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 5 : Be Careful of Past Participles</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td><strong>Past Participles</strong></td>
+							</tr>
+							<tr>
+							  <td>A <i>past participle</i> often ends in <i>-ed</i>, but there are also many irregular past participle. For many verbs, including <i>-ed</i> verbs, the <i>simple past</i> and the <i>past participle</i> are the same and can be easily confused. The <i>-ed</i> form of the verb can be (1) the <i>simple past</i>, (2) the <i>past participle</i> of a verb, or (3) an <i>adjective.</i>
+							  </td>
+							</tr>
+							<tr>
+							  <td><i class="fa fa-key"></i><i> <i>1. She <strong>painted</strong> this picture.</i><br>
+								  <i class="fa fa-key"></i><i> <i>2. She <strong>has painted</strong> this picture.</i>
+								  <i class="fa fa-key"></i><i> <i>3. The picture <strong>painted by</strong> Karen is now in a museum.</i><br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 6 : </strong> <a href="#" class="alert-link">Use Coordinate Connectors Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 6 : Use Coordinate Connectors Correctly</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=5><strong>Coordinate Connectors</strong></td>
+							</tr>
+							<tr>
+							  <td width=20%><i>and</i></td>
+							  <td width=20%><i>but</i></td>
+							  <td width=20%><i>or</i></td>
+							  <td width=20%><i>so</i></td>
+							  <td width=20%><i>yet</i></td>
+							</tr>
+							<tr>
+							  <td>S<br><strong>She</strong></td>
+							  <td>V,<br><strong>laughed,</strong></td>
+							  <td>coordinate connector<br><strong>but</strong></td>
+							  <td>S<br><strong>she</strong></td>
+							  <td>V<br><strong>wanted to cry.</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 7 : </strong> <a href="#" class="alert-link">Use Adverb <i>Time</i> and <i>Cause</i> Connectors Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 7 : Adverb Time and Cause Connectors</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>TIME</strong></td>
+							  <td colspan=2><strong>CAUSE</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>after</i></td>
+							  <td><i>as soon as</i></td>
+							  <td><i>once</i></td>
+							  <td><i>when</i></td>
+							  <td><i>as</i></td>
+							  <td><i>now that</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>as</i></td>
+							  <td><i>before</i></td>
+							  <td><i>since</i></td>
+							  <td><i>whenever</i></td>
+							  <td><i>because</i></td>
+							  <td><i>since</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>as long as</i></td>
+							  <td><i>by the time</i></td>
+							  <td><i>until</i></td>
+							  <td><i>while</i></td>
+							  <td><i><u>inasmuch as </u></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2>S<br><strong>Teresa</strong></td>
+							  <td>V<br><strong>went inside</strong></td>
+							  <td>adverb connector<br><strong>because</strong></td>
+							  <td>S<br><strong>it</strong></td>
+							  <td>V<br><strong>was raining.</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2>adverb connector<br><strong>Because</strong></td>
+							  <td>S<br><strong>it</strong></td>
+							  <td>V,<br><strong>was raining,</strong></td>
+							  <td>S<br><strong>Teresa</strong></td>
+							  <td>V<br><strong>went inside.</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 8 : </strong> <a href="#" class="alert-link">Use Other Adverb Connectors Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 8 : Other Adverb Connectors</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>CONDITION</strong></td>
+							  <td><strong>CONTRAST</strong></td>
+							  <td><strong>MANNER</strong></td>
+							  <td><strong>PLACE</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>if</i></td>
+							  <td><i>although</i></td>
+							  <td><i>as</i></td>
+							  <td><i>where</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>in case</i></td>
+							  <td><i>even though</i></td>
+							  <td><i>in that</i></td>
+							  <td><i>wherever</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>provided</i></td>
+							  <td><i>though</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>providing</i></td>
+							  <td><i>while</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>unless</i></td>
+							  <td><i>whereas</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>whether</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>provided</i></td>
+							  <td><i>though</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td>S<br><strong>Bob</strong></td>
+							  <td>V<br><strong>went to school</strong></td>
+							  <td>adverb connector<br><strong>even though</strong></td>
+							  <td>S<br><strong>he</strong></td>
+							  <td>V<br><strong>felt sick.</strong></td>
+							</tr>
+							<tr align="center">
+							  <td>adverb connector<br><strong>Even though</strong></td>
+							  <td>S<br><strong>Bob</strong></td>
+							  <td>V,<br><strong>felt sick,</strong></td>
+							  <td>S<br><strong>he</strong></td>
+							  <td>V<br><strong>went to school.</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+						<br><strong>NOTE : </strong>
+						A comma is often to used in the middle of the sentence with a contrast connector.
+						<br><strong>Example : </strong>
+						<i><u>The smith family</u> <u>arrived</u> at 2:00, while <u>the Jones family</u> <u>arrived</u> an hour later.</i> 
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 9 : </strong> <a href="#" class="alert-link">Use Noun Clause Connectors Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 9 : Noun Clause Connectors</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Noun Clause Connectors</strong></td>
+							</tr>
+							<tr>
+							  <td><i>* what, when, where, why, how</i></td>
+							  <td><i>* whatever, whenever</i></td>
+							  <td><i>* whether, if</i></td>
+							  <td><i>* that</i></td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=5><strong>Example</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2></td>
+							  <td colspan=3><strong><u>Noun Clause Object</u></strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=20%>S<br><i><strong>I</strong></i></td>
+							  <td width=20%>V<br><i><strong>know</strong></i></td>
+							  <td width=20%><u>noun connector</u><br><i><strong>what</strong></i></td>
+							  <td width=20%>S<br><i><strong>you</strong></i></td>
+							  <td width=20%>V<br><i><strong>did</strong></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 10 : </strong> <a href="#" class="alert-link">Use Noun Clause Connectors/Subjects Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 10 : Use Noun Clause Connectors/Subjects Correctly</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Noun Clause Connector/Subjects</strong></td>
+							</tr>
+							<tr>
+							  <td><i>who</i></td>
+							  <td><i>what</i></td>
+							  <td><i>which</i></td>
+							</tr>
+							<tr>
+							  <td><i>whoever</i></td>
+							  <td><i>whatever</i></td>
+							  <td><i>whichever</i></td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Example (1)</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2></td>
+							  <td colspan=2><strong><u>Noun Clause As Object</u></strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=20%>S<br><i><strong>I</strong></i></td>
+							  <td width=20%>V<br><i><strong>know</strong></i></td>
+							  <td width=20%><u>noun connector/subject</u><br><i><strong>what</strong></i></td>
+							  <td width=20%>V<br><i><strong>happened.</strong></i></td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Example (2)</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2><strong><u>Noun Clause As Subject</u></strong></td>
+							  <td></td>
+							</tr>
+							<tr align="center">
+							  <td><u>noun connector/subject</u><br><i><strong>What</strong></i></td>
+							  <td>V<br><i><strong>happened</strong></i></td>
+							  <td>V<br><i><strong>was great.</strong></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 11 : </strong> <a href="#" class="alert-link">Use Adjective Clause Connectors Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 11 : Adjective Clause Connectors</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Noun Clause Connector/Subjects</strong></td>
+							</tr>
+							<tr>
+							  <td><i>whom</i><br>(for people)</td>
+							  <td><i>which</i><br>(for things)</td>
+							  <td><i>that</i><br>(for people or things)</td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Example (1)</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=20%>S<br><i><strong>I</strong></i></td>
+							  <td width=20%>V<br><i><strong>liked the book</strong></i></td>
+							  <td width=20%><u>adjective connector</u><br><i><strong>which</strong></i></td>
+							  <td width=20%>S<br><i><strong>you</strong></i></td>
+							  <td width=20%>V<br><i><strong>recommended.</strong></i></td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Example (2)</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=20%>S<br><i><strong>The book</strong></i></td>
+							  <td width=20%><u>adjective connector</u><br><i><strong>which</strong></i></td>
+							  <td width=20%>S<br><i><strong>you</strong></i></td>
+							  <td width=20%>V<br><i><strong>recommended</strong></i></td>
+							  <td width=20%>V<br><i><strong>was interesting.</strong></i></td>
+							</tr>
+						  </tbody>
+						</table><br>
+						<strong>NOTE :</strong> <br>The adjective connectors can be omitted. This omission is very common in spoken English or in casual written English. It is not as common in formal English or in structure questions on the TOEFL test.
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 12 : </strong> <a href="#" class="alert-link">Use Adjective Clause Connectors/Subject Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 12 : Adjective Clause Connector/Subjects </strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Noun Clause Connector/Subjects</strong></td>
+							</tr>
+							<tr>
+							  <td><i>whom</i><br>(for people)</td>
+							  <td><i>which</i><br>(for things)</td>
+							  <td><i>that</i><br>(for people or things)</td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Example</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2></td>
+							  <td colspan=2><strong><u>Noun Clause As Object</u></strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=25%>S<br><i><strong>She</strong></i></td>
+							  <td width=25%>V<br><i><strong>needs a secretary</strong></i></td>
+							  <td width=25%><u>adjective connector/subject</u><br><i><strong>who</strong></i></td>
+							  <td width=25%>V<br><i><strong>types fast.</strong></i></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=4><i><strong>A secretary <i>who</i> types fast is invaluable.</strong></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>									
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 13 : </strong> <a href="#" class="alert-link">Use Reduced Adjective Clauses Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 13 : Reduced Adjective Clauses</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=3><strong>Reduced Adjective Clauses</strong></td>
+							</tr>
+							<tr>
+							  <td>with a <i>be-</i> verb in the adjective clause</td>
+							  <td>(Adjective Connector/Subjects)<br><i>(who, which, that)</i></td>
+							  <td>(BE)</td>
+							</tr>
+							<tr>
+							  <td>with NO <i>be-</i> verb in the adjective clause</td>
+							  <td>(Adjective Connector/Subjects)<br><i>(who, which, that)</i></td>
+							  <td>(VERB + ING)</td>
+							</tr>
+							<tr>
+							  <td colspan=3>
+								<i class="fa fa-key"></i> To reduce an adjective clause, omit the adjective clause connector/subject and the <i>be-</i> verb.<br>
+								<i class="fa fa-key"></i> If there is no <i>be-</i> verb, omit the connector/subject and change the main verb to the <i>-ing</i> form.<br>
+								<i class="fa fa-key"></i> Only reduce an adjective clause if the connector/subject is directly followed by the verb.<br>
+								<i class="fa fa-key"></i> If an adjective clause is set off with commas, the reduced clause can be moved to the front of the sentence.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 14 : </strong> <a href="#" class="alert-link">Use Reduced Adverb Clause Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 14 : Reduced Adverb Clause</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Reduced Adverb Clauses</strong></td>
+							</tr>
+							<tr>
+							  <td>with a <i>be-</i> verb in the adverb clause</td>
+							  <td>(Adverb Connector)</td>
+							  <td>(SUBJECT)</td>
+							  <td>(BE)</td>
+							</tr>
+							<tr>
+							  <td>with no <i>be-</i> verb in the adverb clause</td>
+							  <td>(Adverb Connector)</td>
+							  <td>(SUBJECT)</td>
+							  <td>(VERB + ING)</td>
+							</tr>
+						  </tbody>
+						</table>
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td></td>
+							  <td><strong>Time</strong></td>
+							  <td><strong>Condition</strong></td>
+							  <td><strong>Contrast</strong></td>
+							  <td><strong>Place</strong></td>
+							  <td><strong>Manner</strong></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=4 width=20%><strong>reduces in ACTIVE</strong></td>
+							  <td><i>after</i></td>
+							  <td><i>if</i></td>
+							  <td><i>although</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>before</i></td>
+							  <td><i>unless</i></td>
+							  <td><i>though</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>since</i></td>
+							  <td><i>whether</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>while</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=4 width=20%><strong>reduces in PASSIVE</strong></td>
+							  <td><i>once</i></td>
+							  <td><i>if</i></td>
+							  <td><i>although</i></td>
+							  <td><i>where</i></td>
+							  <td><i>as</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>until</i></td>
+							  <td><i>unless</i></td>
+							  <td><i>though</i></td>
+							  <td><i>wherever</i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>when</i></td>
+							  <td><i>whether</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>whenever</i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr>
+							  <td colspan=6>
+								<i class="fa fa-key"></i> To reduce an adverb clause, omit the subject and the <i>be-</i> verb from the adverb clause.<br>
+								<i class="fa fa-key"></i> If there is no <i>be-</i> verb, omit the subject and change the verb to the <i>-ing</i> form.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 15 : </strong> <a href="#" class="alert-link">Invert the Subject and Verb with Question Words</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 15 : Invert the Subject and Verb with Question Words</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=6><strong>Inverted Subjects and Verbs with Question Words</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>who</i></td>
+							  <td><i>what</i></td>
+							  <td><i>when</i></td>
+							  <td><i>where</i></td>
+							  <td><i>why</i></td>
+							  <td><i>how</i></td>
+							</tr>
+							<tr><td colspan=6>When the question word introduces a question, the subject and verb <i>are</i> inverted.</td></tr>
+							<tr align="center">
+							  <td colspan=3><u>Question word</u><br><strong><i>What</i></strong></td>
+							  <td>V<br><strong><i>are</i></strong></td>
+							  <td>S<br><strong><i>they</i></strong></td>
+							  <td>?</u><br><strong><i>?</i></strong></td>
+							</tr>
+							<tr><td colspan=6>When the question word connect two clauses, the subject and verb <i>are not</i> inverted.</td></tr>
+							<tr align="center">
+							  <td>S<br><strong><i>I</i></strong></td>
+							  <td>V<br><strong><i>know</i></strong></td>
+							  <td colspan=2><u>Question word</u><br><strong><i>what</i></strong></td>
+							  <td>S<br><strong><i>they</i></strong></td>
+							  <td>V</u><br><strong><i>are.</i></strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 16 : </strong> <a href="#" class="alert-link">Invert the Subject and Verb with Place Expressions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 16 : Invert the Subject and Verb with Place Expressions</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr><td colspan=3>When a place expression at the front of the sentence is <i>necessary</i> to complete the sentence, the subject and verb that follow <i>are</i> inverted.</td></tr>
+							<tr align="center">
+							  <td><u>PLACE (necessary)</u><br><strong><i>In the classroom</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td>S<br><strong><i>some old desks.</i></strong></td>
+							</tr>
+							<tr><td colspan=3>When a place expression at the front of the sentence contains <i>extra</i> information that is <i>not</i> needed to complete the sentence, the subject and verb that follow <i>are not</i> inverted.</td></tr>
+							<tr align="center">
+							  <td><u>PLACE (extra)</u><br><strong><i>In the classroom,</i></strong></td>
+							  <td>S<br><strong><i>I</i></strong></td>
+							  <td>V<br><strong><i>studied very hard.</i></strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 17 : </strong> <a href="#" class="alert-link">Invert the Subject and Verb with Negatives</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 17 : Invert the Subject and Verb with Negatives</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=6><strong>Inverted Subjects and Verbs with Negatives</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>no</i></td>
+							  <td><i>not</i></td>
+							  <td><i>never</i></td>
+							  <td><i>neither</i></td>
+							  <td><i>nor</i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>barely</i></td>
+							  <td><i>hardly</i></td>
+							  <td><i>only</i></td>
+							  <td><i>rarely</i></td>
+							  <td><i>scarcely</i></td>
+							  <td><i>seldom</i></td>
+							</tr>
+							<tr><td colspan=6>When a negative expression appears <i>in front of</i> a subject and verb (at the beginning sentence or in the middle of a sentence) the subject and verb <i>are</i> inverted. </td></tr>
+							<tr align="center">
+							  <td colspan=4><u>negative expression</u><br><strong><i>Rarely</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td>S<br><strong><i>they so happy.</i></strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 18 : </strong> <a href="#" class="alert-link">Invert the Subject and Verb with Conditionals</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 18 : Invert the Subject and Verb with Conditionals</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Inverted Subjects and Verbs with Conditionals</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2><i>had</i></td>
+							  <td><i>should</i></td>
+							  <td><i>where</i></td>
+  						    </tr>
+							<tr><td colspan=4>When the verb in the conditional clause is <i>had, should,</i> or <i>were</i>, it is possible to omit <i>if</i> and invert the subject and verb.</td></tr>
+							<tr align="center">
+							  <td><u>(omitted if)</u><br><strong><i></i></strong></td>
+							  <td>V<br><strong><i>Were</i></strong></td>
+							  <td>S<br><strong><i>he</i></strong></td>
+							  <td><br><strong><i>here, he would help.</i></strong></td>
+							</tr>
+							<tr><td colspan=4>It is also possible to keep <i>if</i>. Then the subject and verb <i>are not</i> inverted.</td></tr>
+							<tr align="center">
+							  <td><u>if</u><br><strong><i>If</i></strong></td>
+							  <td>S<br><strong><i>he</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td><br><strong><i>here, he would help.</i></strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 19 : </strong> <a href="#" class="alert-link">Invert the Subject and Verb with Comparisons</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 19 : Invert the Subject and Verb with Comparisons</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=5><strong>Inverted Subjects and Verbs with Comparisons</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=5>The subject and verb <i>may</i> invert after a comparison. The following structures are both possible.</td>
+							</tr>
+							<tr align="center">
+							  <td>S<br><strong><i>We</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td><u>comparison</u><br><strong><i>more prepared than</i></strong></td>
+							  <td>S<br><strong><i>the other performers</i></strong></td>
+							  <td>V<br><strong><i>were.</i></strong></td>
+							</tr>
+							<tr align="center">
+							  <td>S<br><strong><i>We</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td><u>comparison</u><br><strong><i>more prepared than</i></strong></td>
+							  <td>V<br><strong><i>were</i></strong></td>
+							  <td>S<br><strong><i>the other performers.</i></strong></td>
+							</tr>
+							<tr>
+							  <td colspan=5><u>NOTE :</u> A subject-verb inversion after a comparison sounds rather formal.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 20 : </strong> <a href="#" class="alert-link">Make Verbs Agree after Prepositional Phrases</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 20 : Make Verbs Agree after Prepositional Phrases</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Subject/Verb Agreement With Prepositional Phrases</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>S + (prepositional phrase) + ...</strong></td>
+							</tr>
+							<tr>
+							  <td>When a <i>prepositional phrase</i> comes between the <i>subject</i> and the <i>verb</i>, be sure that the <i>verb</i> agrees with the <i>subject</i>.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 21 : </strong> <a href="#" class="alert-link">Make Verbs Agree after Expressions of Quantity</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 21 : Subject/Verb Agreement After Expressions of Quantity</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>Subject/Verb Agreement With Prepositional Phrases</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong><i>all<br>most<br>some<br>half</i></strong></td>
+							  <td><strong>OF THE (OBJECT) + ...</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=2>When an expression of quantity is the subject, the verb agrees with the object.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 22 : </strong> <a href="#" class="alert-link">Make Inverted Verbs Agree</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 22 : Subject/Verb Agreement After Expressions of Quantity</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>Subject/Verb Agreement With Prepositional Phrases</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong><i>question<br>negative<br>place<br>condition (no if)<br>comparison</i></strong></td>
+							  <td><strong>V + S</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=2>After question words. negative expressions, place expressions, condition without <i>if</i>, and comparisons, the <i>verb</i> with the <i>subject</i>, which may be after the <i>verb</i>.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 23 : </strong> <a href="#" class="alert-link">Make Verbs Agree after Certain Words</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 23 : Subject/Verb Agreement After Certain Words</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=5><strong>These words or expressions are grammatically singular, so they take singular verbs :</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>anybody</i></td>
+							  <td><i>everybody</i></td>
+							  <td><i>nobody</i></td>
+							  <td><i>somebody</i></td>
+							  <td><i>each (+noun)</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>anyone</i></td>
+							  <td><i>everyone</i></td>
+							  <td><i>no one</i></td>
+							  <td><i>someone</i></td>
+							  <td><i>every (+noun)</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>anything</i></td>
+							  <td><i>everything</i></td>
+							  <td><i>nothing</i></td>
+							  <td><i>something</i></td>
+							  <td><i></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 24 : </strong> <a href="#" class="alert-link">Use Parallel Structure with Coordinate Conjunctions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 24 : Use Parallel Structure with Coordinate Conjunctions</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Parallel Structure With Coordinate Conjunctions</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2>(same structure)</td>
+							  <td><i><strong>and<br>but<br>or</strong></i></td>
+							  <td>(same structure)</td>
+							</tr>
+							<tr align="center">
+							  <td>(same structure),</td>
+							  <td>(same structure),</td>
+							  <td><i><strong>and<br>but<br>or</strong></i></td>
+							  <td>(same structure)</td>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 25 : </strong> <a href="#" class="alert-link">Use Parallel Structure with Paired Conjunctions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 25 : Use Parallel Structure with Paired Conjunctions</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Parallel Structure With Paired Conjunctions</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i><strong>both<br>either<br>neither<br>not only</strong></i></td>
+							  <td colspan=2>(same structure)</td>
+							  <td><i><strong>and<br>or<br>nor<br>but also</strong></i></td>
+							  <td>(same structure)</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 26 : </strong> <a href="#" class="alert-link">Use Parallel Structure with Comparisons</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 26 : Use Parallel Structure with Comparisons</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>Parallel Structure With Comparisons</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2>(same structure)</td>
+							  <td><i><strong>more ... than<br>-er ... than<br>less ... than<br>as ... as<br>the same ... as<br>similar ... to</strong></i></td>
+							  <td>(same structure)</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 27 : </strong> <a href="#" class="alert-link">Form Comparatives and Superlatives Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 27 : Form Comparatives and Superlatives</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>The Form Comparatives and Superlatives</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>COMPARATIVE</strong></td>
+							  <td colspan=2><i><strong>more   (long adjective)/<br>(short adjective) + <i>er</i><br>less ... than<br>as ... as<br>the same ... as<br>similar ... to</strong></i></td>
+							  <td><i>than</i></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>SUPERLATIVE</strong></td>
+							  <td><i>the</i></td>
+							  <td><i><strong>most   (long adjective)/<br>(short adjective) + <i>est</i><br>less ... than<br>as ... as<br>the same ... as<br>similar ... to</strong></i></td>
+							  <td>maybe <i>in, of, that</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 28 : </strong> <a href="#" class="alert-link">Use Comparatives and Superlatives Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 28 : Use Comparatives and Superlatives Correctly</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr>
+							  <td colspan=4><strong>The Uses Comparatives and Superlatives</strong></td>
+							</tr>
+							<tr align="center">
+							  <td> The <strong>Comparative</strong> is used to compare <i>two equal things</i></td>
+							</tr>
+							<tr align="center">
+							  <td> The <strong>Superlative</strong> is used to show which <i>one of many</i> is in some way the most outstanding.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 29 : </strong> <a href="#" class="alert-link">Use the Irregular -er, -er Structure Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 29 : Use the Irregular -er, -er Structure Correctly</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=6><strong>The -ER, -ER Structure</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>THE</i></td>
+							  <td><i><strong>-er<br>more</strong></i></td>
+							  <td>(same structure),</td>
+							  <td><i>THE</i></td>
+							  <td><i><strong>-er<br>more</strong></i></td>
+							  <td>(same structure),</td>
+							</tr>
+							<tr>
+							  <td colspan=6>This type of sentence may or may not include a verb.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 30 : </strong> <a href="#" class="alert-link">After <i>HAVE</i>, Use the Past Participles</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 30 : After <i>HAVE</i>, Use the Past Participles</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Verb Forms After <i>Have</i></strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>HAVE + past participle</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 31 : </strong> <a href="#" class="alert-link">After <i>BE</i>, Use the Present Participle or the Past Participle</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 31 : After <i>BE</i>, Use the Present Participle or the Past Participle</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Verb Forms After <i>BE</i></strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=50%><strong>BE</strong></td>
+							  <td><strong>+</strong></td>
+							  <td><strong>present participle<br>past participle   </strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 32 : </strong> <a href="#" class="alert-link">After <i>WILL, WOULD</i>, or other Modals, Use the Base Form of the Verb</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 32 : After <i>WILL, WOULD</i>, or other Modals, Use the Base Form of the Verb</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Verb Forms After <i>MODALS</i></strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=50%><strong>MODAL</strong></td>
+							  <td><strong>+</strong></td>
+							  <td><strong>base form of the verb</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>					  
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 33 : </strong> <a href="#" class="alert-link">Know When to Use Past with the Present</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 33 : Know When to Use Past with the Present </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Using The Past With The Present</strong></td>
+							</tr>
+							<tr align="center">
+							  <td>
+									<i class="fa fa-key"></i><i> If you see a sentence with one verb in the <i>past</i> and one verb in the <i>present</i>, the sentence is probably incorrect.<br>
+									<i class="fa fa-key"></i><i> However, it is possible for a correct sentence to have both <i>past</i> and <i>present</i> together.<br>
+									<i class="fa fa-key"></i><i> If you see the <i>past</i> and <i>present</i> together, you must <i>check the meaning</i> to determine whether or not the sentence is correct.<br>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 34 : </strong> <a href="#" class="alert-link">Use <i>HAVE </i>and <i>HAD</i> Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 34 : Use <i>HAVE </i>and <i>HAD</i> Correctly </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Using (<i>HAVE + </i>Past Participle) and (<i>HAD + </i>Past Participle)</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=25%><strong>TENSE</strong></td>
+							  <td width=25%><strong>FORM</strong></td>
+							  <td width=25%><strong>MEANING</strong></td>
+							  <td width=25%><strong>USE</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=25%>present perfect</td>
+							  <td width=25%><i>have</i> + past participle</td>
+							  <td width=25%>past up to now</td>
+							  <td width=25%>not with a past tense **</td>
+							</tr>
+							<tr align="center">
+							  <td width=25%>past perfect</td>
+							  <td width=25%><i>had</i> + past participle</td>
+							  <td width=25%>before past up to past</td>
+							  <td width=25%>not with a present tense</td>
+							</tr>
+							<tr>
+							  <td colspan=4><strong>** Except when the time expression <i>since</i> is part of the sentence.</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 35 : </strong> <a href="#" class="alert-link">Use the Correct Tense with Time Expressions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 35 : Use the Correct Tense with Time Expressions</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Using Correct Tense with Time Expressions</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>PAST PERFECT</strong></td>
+							  <td><strong>SIMPLE PAST</strong></td>
+							  <td><strong>PRESENT PERFECT</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>by (1920)</i></td>
+							  <td><i>(two years) ago</i></td>
+							  <td><i>since (1920)</i></td>
+							</tr>
+							<tr align="center">
+							  <td></td>
+							  <td><i>last (years)</i></td>
+							  <td><i>lately</i></td>
+							</tr>
+							<tr align="center">
+							  <td></td>
+							  <td><i>in (1920)</i></td>
+							  <td></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 36 : </strong> <a href="#" class="alert-link">Use the Correct Tense with <i>WILL</i> and <i>WOULD</i></a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 36 : Use the Correct Tense with <i>WILL</i> and <i>WOULD</i></h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Using Correct Tense with <i>WILL</i> and <i>WOULD</i></strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>VERB</strong></td>
+							  <td><strong>MEANING</strong></td>
+							  <td><strong>USE</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>will</i></td>
+							  <td>after the present</td>
+							  <td>do not use with past</td>
+							</tr>
+							<tr align="center">
+							  <td><i>would</i></td>
+							  <td>after the past</td>
+							  <td>do not use with present</td>
+							</tr>
+							<tr>
+							  <td colspan=3><strong>NOTE : </strong><br>There is a different modal <i>would</i> that is used to make polite requests. This type of <i>would</i> is often used with the present tense.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 37 : </strong> <a href="#" class="alert-link">Use the Correct Form of the Passive</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 37 : Use the Correct Form of the Passive</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>The Form of the Passive</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=50%><strong>BE</strong></td>
+							  <td><strong>+</strong></td>
+							  <td><strong>past participle (<i>BY</i> + object)</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 38 : </strong> <a href="#" class="alert-link">Recognize Active and Passive Meanings</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 38 : Recognize Active and Passive Meanings </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>Active and Passive Meanings</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>ACTIVE</strong></td>
+							  <td>The subject <i>does</i> the action of the verb.</td>
+							</tr>
+							<tr>
+							  <td><strong>PASSIVE</strong></td>
+							  <td>The subject <i>receives</i> the action of the verb.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 39 : </strong> <a href="#" class="alert-link">Use the Correct Singular or Plural Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 39 : Use the Correct Singular or Plural Nouns </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=6><strong>Key Words For Singular or Plural Nouns</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=35%><strong>For Singular Nouns</strong></td>
+							  <td><i>each</i></td>
+							  <td><i>every</i></td>
+							  <td><i>single</i></td>
+							  <td><i>one</i></td>
+							  <td><i>a</i></td>
+							</tr>
+							<tr align="center">
+							  <td width=35%><strong>For Plural Nouns</strong></td>
+							  <td><i>both</i></td>
+							  <td><i>two</i></td>
+							  <td><i>many</i></td>
+							  <td><i>several</i></td>
+							  <td><i>various</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 40 : </strong> <a href="#" class="alert-link">Distinguish Countable and Uncountable Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 40 : Distinguish Countable and Uncountable Nouns </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=5><strong>Key Words For Countable and Uncountable Nouns</strong></td>
+							</tr>
+							<tr align="center">
+							  <td width=35%><strong>For Countable Nouns</strong></td>
+							  <td><i>many</i></td>
+							  <td><i>number</i></td>
+							  <td><i>few</i></td>
+							  <td><i>fewer</i></td>
+							</tr>
+							<tr align="center">
+							  <td width=35%><strong>For Uncountable Nouns</strong></td>
+							  <td><i>much</i></td>
+							  <td><i>amount</i></td>
+							  <td><i>little</i></td>
+							  <td><i>less</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 41 : </strong> <a href="#" class="alert-link">Recognize Irregular Plurals of Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 41 : Recognize Irregular Plurals of Nouns </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=5><strong>Irregular Plurals</strong></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=2><strong>Vowel Change</strong></td>
+							  <td><i>man/men</i></td>
+							  <td><i>foot/feet</i></td>
+							  <td><i>goose/geese</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>woman/women</i></td>
+							  <td><i>tooth/teeth</i></td>
+							  <td><i>mouse/mice</i></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>Add <i>-EN</i></strong></td>
+							  <td><i>child/children</i></td>
+							  <td><i>ox/oxen</i></td>
+							  <td><i></i></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=3><strong><i>-IS -> -ES</i></strong></td>
+							  <td><i>analysis/analyses</i></td>
+							  <td><i>diagnosis/diagnoses</i></td>
+							  <td><i>synthesis/syntheses</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>axis/axes</i></td>
+							  <td><i>hypothesis/hypotheses</i></td>
+							  <td><i>thesis/theses</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>crisis/crises</i></td>
+							  <td><i>parenthesis/parentheses</i></td>
+							  <td></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=2><strong>Ends in <i>-A</i></strong></td>
+							  <td><i>bacterium/bacteria</i></td>
+							  <td><i>datum/data</i></td>
+							  <td><i>criterion/criteria</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>curriculum/curricula</i></td>
+							  <td><i>phenomenon/phenomena</i></td>
+							  <td></td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=3><strong><i>-US -> -I</i></strong></td>
+							  <td><i>alumnus/alumni</i></td>
+							  <td><i>fungus/fungi</i></td>
+							  <td><i>stimulus/stimuli</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>bacillus/bacilli</i></td>
+							  <td><i>nucleus/nuclei</i></td>
+							  <td><i>syllabus/syllabi</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>cactus/cacti</i></td>
+							  <td><i>radius/radii</i></td>
+							  <td></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 42 : </strong> <a href="#" class="alert-link">Distinguish the Person from the Thing</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 42 : Distinguish the Person from the Thing</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Person or Thing</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>It is common to confuse a person with a thing in written expression question on the TOEFL test.</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 43 : </strong> <a href="#" class="alert-link">Distinguish Subject and Object Pronouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 43 : Distinguish Subject and Object Pronouns</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>SUBJECT</strong></td>
+							  <td><strong>OBJECT</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>I</i></td>
+							  <td><i>me</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>you</i></td>
+							  <td><i>you</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>he</i></td>
+							  <td><i>him</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>she</i></td>
+							  <td><i>her</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>it</i></td>
+							  <td><i>it</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>we</i></td>
+							  <td><i>us</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>they</i></td>
+							  <td><i>them</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 44 : </strong> <a href="#" class="alert-link">Distinguish Possessive Adjectives and Pronouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 44 : Distinguish Possessive Adjectives and Pronouns</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Possessive Adjective</strong></td>
+							  <td><strong>Possessive Pronouns</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>my</i></td>
+							  <td><i>mine</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>your</i></td>
+							  <td><i>yours</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>his</i></td>
+							  <td><i>his</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>her</i></td>
+							  <td><i>hers</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>its</i></td>
+							  <td><i>-</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>our</i></td>
+							  <td><i>ours</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>their</i></td>
+							  <td><i>theirs</i></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>must be accompanied by a noun</strong></td>
+							  <td><strong><i>cannot</i> be accompanied by a noun</strong></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 45 : </strong> <a href="#" class="alert-link">Check Pronoun Reference for Agreement</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 45 : Check Pronoun Reference for Agreement</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Pronoun Agreement</strong></td>
+							</tr>
+							<tr>
+							  <td>
+									<i class="fa fa-key"></i><i> Be sure that every pronoun and possessive agrees with the noun it refers to.
+									<i class="fa fa-key"></i><i> You generally check back in the sentence for agreement.
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 46 : </strong> <a href="#" class="alert-link">Use basic Adjective and Adverbs Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 46 : Use basic Adjective and Adverbs Correctly</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>Basic Use of Adjectives and Adverbs</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>ADJECTIVES</strong></td>
+							  <td>Adjectives describe <i>nouns</i> or <i>pronouns.</i></td>
+							</tr>
+							<tr>
+							  <td><strong>ADVERBS</strong></td>
+							  <td>Adverbs describe <i>verbs, adjectives,</i> or other <i>adverbs.</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		    <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 47 : </strong> <a href="#" class="alert-link">Use Adjectives after Linking Verbs</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 47 : Use Adjectives after Linking Verbs</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong>Adjectives and Adverbs after Verbs</strong></td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2><strong>(subject)</td>
+							  <td><strong>(regular verb)</td>
+							  <td><strong>(adverb)</strong></td>
+							</tr>
+							<tr >
+							  <td colspan=4>A regular verb is followed by an adverb. The adverb describes the verb.</td>
+							</tr>
+							<tr align="center">
+							  <td colspan=2><strong>(subject)</td>
+							  <td><strong>(linking verb)</td>
+							  <td><strong>(adjective)</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=4>A linking verb is followed by an adjective. The adjective describes the subject.</td>
+							</tr>
+							<tr align="center">
+							  <td><strong>(subject)</td>
+							  <td><strong>(linking verb)</td>
+							  <td><strong>(adverb)</td>
+							  <td><strong>(adjective)</strong></td>
+							</tr>
+							<tr>
+							  <td colspan=4>It is possible that a linking verb is followed by an adverb and an adjective. The adverb describes the adjective, and the adjective describes the subject.</td>
+							</tr>
+							<tr align="center">
+							  <td rowspan=3><strong>LINKING VERBS</strong></td>
+							  <td><i>appear</i></td>
+							  <td><i>feel</i></td>
+							  <td><i>seem</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>be</i></td>
+							  <td><i>look</i></td>
+							  <td><i>smell</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>become</i></td>
+							  <td><i>prove</i></td>
+							  <td><i>taste</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		    <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 48 : </strong> <a href="#" class="alert-link">Position Adjectives and Adverbs Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 48 : Position Adjectives and Adverbs Correctly</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>The Position Adjectives and Adverbs</strong></td>
+							</tr>
+							<tr>
+							  <td><strong>ADJECTIVES</strong></td>
+							  <td>A one-word <i>adjective</i> comes before the noun it describes. It does not come directly after.</td>
+							</tr>
+							<tr>
+							  <td><strong>ADVERBS</strong></td>
+							  <td>An <i>adverbs</i> can appear in many positions. It cannot be used between a verb and its object.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		    <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 49 : </strong> <a href="#" class="alert-link">Recognize <i>-ly</i> Adjectives</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 49 : Recognize <i>-ly</i> Adjectives</strong> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=5><strong><i>-LY</i> Adjectives</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>costly</i></td>
+							  <td><i>likely</i></td>
+							  <td><i>daily</i></td>
+							  <td><i>quarterly</i></td>
+							  <td><i>northerly</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>early</i></td>
+							  <td><i>lively</i></td>
+							  <td><i>hourly</i></td>
+							  <td><i>weekly</i></td>
+							  <td><i>easterly</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>friendly</i></td>
+							  <td><i>lonely</i></td>
+							  <td><i>monthly</i></td>
+							  <td><i>yearly</i></td>
+							  <td><i>southerly</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>kindly</i></td>
+							  <td><i>manly</i></td>
+							  <td><i>nightly</i></td>
+							  <td><i>lovely</i></td>
+							  <td><i>westerly</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		    <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 50 : </strong> <a href="#" class="alert-link">Use Predicate Adjectives Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 50 : Use Predicate Adjectives Correctly </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>PREDICATE ADJECTIVES</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>Predicate Adjectives</strong></td>
+							  <td><strong>Forms Used In Front Of A Noun</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>alike</i></td>
+							  <td><i>like, similar</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>alive</i></td>
+							  <td><i>live, living</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>alone</i></td>
+							  <td><i>lone</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>afraid</i></td>
+							  <td><i>frightened</i></td>
+							</tr>
+							<tr align="center">
+							  <td><i>asleep</i></td>
+							  <td><i>sleeping</i></td>
+							</tr>
+							<tr>
+							  <td colspan=2>A predicate adjective appears after a linking verb such as <i>be</i>. It cannot appear in front of the noun that it describes.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 51 : </strong> <a href="#" class="alert-link">Use <i>-ED </i>and <i>-ING</i> Adjectives Correctly</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 51 : Use <i>-ED </i>and <i>-ING</i> Adjectives Correctly </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=4><strong><i>-ED</i> and <i>-ING</i> Adjectives</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>TYPE</strong></td>
+							  <td><strong>MEANING</strong></td>
+							  <td><strong>USE</strong></td>
+							  <td><strong>EXAMPLE</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><i>-ING</i></td>
+							  <td>active</td>
+							  <td>It does the action of the verb.</td>
+							  <td>...the happily <i>playing</i> children ...<br>(The children <i>play</i>)</td>
+							</tr>
+							<tr align="center">
+							  <td><i>-ED</i></td>
+							  <td>passive</td>
+							  <td>It receives the action of the verb.</td>
+							  <td>...the frequently <i>played</i> record ...<br>(Someone <i>plays</i> the record)</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 52 : </strong> <a href="#" class="alert-link">Use Articles with Singular Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 52 : Use Articles with Singular Nouns </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>Articles With Singular Nouns</strong></td>
+							</tr>
+							<tr>
+							  <td>A singular noun <strong>must</strong> have an article (<i>a, an, the</i>) or some other determiner such as <i>my</i> or <i>each</i>. (A plural noun or an uncountable noun <strong>may</strong> or <strong>may not</strong> have an article.)</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 53 : </strong> <a href="#" class="alert-link">Distinguish <i>A </i>and <i>AN</i></a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 53 : Distinguish <i>A </i>and <i>AN</i> </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=2><strong>A and AN</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>A</strong></td>
+							  <td><strong>AN</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong><i>A</i><strong> is used in front of a singular noun with a <i>consonant</i> sound.</td>
+							  <td><strong><i>An</i><strong> is used in front of a singular noun with a <i>vowel</i> sound</td>
+							</tr>
+							<tr>
+							  <td colspan=2>Be careful of nouns beginning with <strong><i>H</i></strong> or <strong><i>U</i></strong>. They have a vowel or a consonant sound.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 54 : </strong> <a href="#" class="alert-link">Make Articles Agree with Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 54 : Make Articles Agree with Nouns </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td><strong>Agreement of Articles With Nouns</strong></td>
+							</tr>
+							<tr align="center">
+							  <td>You should never use <i>a</i> or <i>an</i> with a plural noun.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 55 : </strong> <a href="#" class="alert-link">Distinguish Specific and General Ideas</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls">
+					<a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a>
+				</div>
+				<h3></i> Strategy 55 : Distinguish Specific and General Ideas </h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				   <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">						
+						  <tbody>
+							<tr align="center">
+							  <td colspan=3><strong>Specific and General Ideas</strong></td>
+							</tr>
+							<tr align="center">
+							  <td><strong>ARTICLE</strong></td>
+							  <td><strong>MEANING</strong></td>
+							  <td><strong>USES</strong></td>
+							</tr>
+							<tr>
+							  <td><i>A</i> or <i>AN</i></td>
+							  <td>General Idea</td>
+							  <td>
+								Use when there are <i>many,</i> and you do not <i>know</i> which one it is.<br>
+								Use when there are <i>many,</i> and you do not <i>care</i> which one it is.
+							  </td>
+							</tr>
+							<tr>
+							  <td><i>THE</i></td>
+							  <td>Specific Idea</td>
+							  <td>
+								Use when it is the <i>only one</i>.<br>
+								Use when there are <i>many,</i> and you <i>know</i> which one it is.
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src='../../assets/js/plugins/jquery.pnotify.js'></script>
+<script src='../../assets/js/plugins/jquery.sparkline.min.js'></script>
+<script src='../../assets/js/plugins/mwheelIntent.js'></script>
+<script src='../../assets/js/plugins/mousewheel.js'></script>
+<script src='../../assets/js/bootstrap/tab.js'></script>
+<script src='../../assets/js/bootstrap/dropdown.js'></script>
+<script src='../../assets/js/bootstrap/tooltip.js'></script>
+<script src='../../assets/js/bootstrap/collapse.js'></script>
+<script src='../../assets/js/bootstrap/scrollspy.js'></script>
+<script src='../../assets/js/plugins/bootstrap-datepicker.js'></script>
+<script src='../../assets/js/bootstrap/transition.js'></script>
+<script src='../../assets/js/plugins/jquery.knob.js'></script>
+<script src='../../assets/js/plugins/jquery.flot.min.js'></script>
+<script src='../../assets/js/plugins/fullcalendar.js'></script>
+<script src='../../assets/js/plugins/datatables/datatables.min.js'></script>
+<script src='../../assets/js/plugins/chosen.jquery.min.js'></script>
+<script src='../../assets/js/plugins/jquery.timepicker.min.js'></script>
+<script src='../../assets/js/plugins/daterangepicker.js'></script>
+<script src='../../assets/js/plugins/colpick.js'></script>
+<script src='../../assets/js/plugins/moment.min.js'></script>
+<script src='../../assets/js/plugins/datatables/bootstrap.datatables.js'></script>
+<script src='../../assets/js/bootstrap/modal.js'></script>
+<script src='../../assets/js/plugins/raphael-min.js'></script>
+<script src='../../assets/js/plugins/morris-0.4.3.min.js'></script>
+<script src='../../assets/js/plugins/justgage.1.0.1.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskedinput.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskmoney.js'></script>
+<script src='../../assets/js/plugins/summernote.js'></script>
+<script src='../../assets/js/plugins/dropzone-amd-module.js'></script>
+<script src='../../assets/js/plugins/jquery.validate.min.js'></script>
+<script src='../../assets/js/plugins/jquery.bootstrap.wizard.min.js'></script>
+<script src='../../assets/js/plugins/jscrollpane.min.js'></script>
+<script src='../../assets/js/application.js'></script>
+
+<script src='../../assets/js/template_js/table.js'></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!-- @include _header -->
+<div class="all-wrapper fixed-header left-menu hide-sub-menu">
+  <!-- @include _page_header -->
+  <div class="side">
+  <!-- @include _sidebar -->
+  </div>
+  <div class="main-content">
+    <!-- @include _breadcrumbs -->
+    <div class="widget widget-blue" id="widget_gmaps">
+      <div class="widget-title">
+        <!-- @include _widget_controls -->
+        <h3><i class="fa fa-map-marker"></i> Google Map</h3>
+      </div>
+      <div class="widget-content no-padding">
+        <div id="gmap-default" style="height: 350px;"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="widget widget-red" id="widget_gmaps">
+          <div class="widget-title">
+            <!-- @include _widget_controls -->
+            <h3><i class="fa fa-map-marker"></i> Custom Styled Map</h3>
+          </div>
+          <div class="widget-content no-padding">
+            <div id="gmap-red" style="height: 350px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="widget widget-green" id="widget_gmaps">
+          <div class="widget-title">
+            <!-- @include _widget_controls -->
+            <h3><i class="fa fa-map-marker"></i> Weather Layer</h3>
+          </div>
+          <div class="widget-content no-padding">
+            <div id="gmap-weather" style="height: 350px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- @include _js -->
+
+<!-- @javascript gmaps -->
+
+<!-- @include _footer -->

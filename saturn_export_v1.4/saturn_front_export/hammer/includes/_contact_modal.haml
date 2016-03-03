@@ -1,0 +1,25 @@
+/ Contact Modal
+#contactModal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Contact Us Form
+      .modal-body
+        %form{:action => "#", :role => "form"}
+          .form-group
+            .row
+              .col-md-6
+                %label.control-label Your Name
+                %input.form-control{:type => "text", :placeholder => "your username"}
+              .col-md-6
+                %label.control-label Your Email
+                %input.form-control{:type => "text", :placeholder => "your password"}
+          .form-group
+            .row
+              .col-md-12
+                %label.control-label Your Message
+                %textarea.form-control{:name => "", :rows => "4"}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Cancel
+        %button.btn.btn-primary{:type => "button"} Send Message

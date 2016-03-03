@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+
+  <link rel='stylesheet' href='../../assets/css/plugins/fullcalendar.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/datatables/bootstrap.datatables.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/chosen.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.timepicker.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/daterangepicker-bs3.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/colpick.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/dropzone.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.handsontable.full.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jscrollpane.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.css'>
+<link rel='stylesheet' href='../../assets/css/plugins/jquery.pnotify.default.icons.css'>
+<link rel='stylesheet' href='../../assets/css/app.css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
+
+  <link href="../../assets/favicon.ico" rel="shortcut icon">
+  <link href="../../assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+  <![endif]-->
+
+  <title>Responsive Admin template based on Bootstrap 3</title>
+
+</head>
+
+<body class="glossed">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42863888-4', 'pinsupreme.com');
+  ga('send', 'pageview');
+
+</script>
+<div class="all-wrapper fixed-header left-menu">
+  <div class="page-header">
+  <div class="header-links hidden-xs">
+    <div class="top-search-w pull-right">
+      <input type="text" class="top-search" placeholder="Search"/>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-bolt"></i> User Alerts <span class="badge alert-animated">5</span></a>
+
+      <ul class="dropdown-menu dropdown-inbar dropdown-wide">
+        <li><a href="#"><span class="label label-warning">1 min</span> <i class="fa fa-bell"></i> New Mail Received</a></li>
+        <li><a href="#"><span class="label label-warning">4 min</span> <i class="fa fa-fire"></i> Server Crash</a></li>
+        <li><a href="#"><span class="label label-warning">12 min</span> <i class="fa fa-flag-o"></i> Pending Alert</a></li>
+        <li><a href="#"><span class="label label-warning">15 min</span> <i class="fa fa-smile-o"></i> User Signed Up</a></li>
+      </ul>
+    </div>
+    <div class="dropdown hidden-sm hidden-xs">
+      <a href="#" data-toggle="dropdown" class="header-link"><i class="fa fa-cog"></i> Settings</a>
+
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <a href="#" class="header-link clearfix" data-toggle="dropdown">
+        <div class="avatar">
+          <img src="../../assets/images/avatar-small.jpg" alt="">
+        </div>
+        <div class="user-name-w">
+          Mirra Ariesta <i class="fa fa-caret-down"></i>
+        </div>
+      </a>
+      <ul class="dropdown-menu dropdown-inbar">
+        <li><a href="#"><span class="label label-warning">2</span> <i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><span class="label label-warning">4</span> <i class="fa fa-users"></i> Friends</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Account Settings</a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <a class="logo hidden-xs" href="index.html"><i class="fa fa-rocket"></i></a>
+  <a class="menu-toggler" href="#"><i class="fa fa-bars"></i></a>
+  <h1>E-TEFL</h1>
+</div>
+  <div class="side">
+  <div class="sidebar-wrapper">
+ <ul>
+    <li>
+      <a href="index.html" data-toggle="tooltip" data-placement="right" title="Dashboard" data-original-title="Dashboard">
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+	<li class='current'>
+      <a class='current' href="v_learnListening.html" data-toggle="tooltip" data-placement="right" title="Learning" data-original-title="Learning">
+		<i class="fa fa-folder-open-o"></i>
+      </a>
+    </li>
+	<li>
+      <a href="v_roles.html" data-toggle="tooltip" data-placement="right" title="Privileges" data-original-title="Hak Akses">
+		<!-- Untuk data yang harus di konfirmasi admin-->
+		<span class="badge">3</span><i class="fa fa-user"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_kategori.html" data-toggle="tooltip" data-placement="right" title="Data Master" data-original-title="Data Master">
+        <span class="badge">8</span><i class="fa fa-file-text-o"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_konversiNilai.html" data-toggle="tooltip" data-placement="right" title="Konversi Nilai" data-original-title="UI Elements">
+        <span class="badge">1</span><i class="fa fa-columns"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_scheduleQuiz.html" data-toggle="tooltip" data-placement="right" title="Schedule Quiz" data-original-title="Quiz">
+        <span class="badge">2</span><i class="fa fa-calendar"></i>
+      </a>
+    </li>
+    <li>
+      <a href="v_monitoring.html" data-toggle="tooltip" data-placement="right" title="Monitoring" data-original-title="Tables">
+        <i class="fa fa-bar-chart-o"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+  <div class="sub-sidebar-wrapper">
+  <ul>
+    <li class='current'><a class='current' href="v_learnListening.html"> Strategy Listening</a></li>
+	<li><a href="v_learnStructure.html"> Strategy Structure</a></li>
+    <li><a href="v_learnReading.html"> Strategy Reading</a></li>
+  </ul>
+</div>
+  </div>
+  <div class="main-content">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Bread</a></li>
+      <li><a href="#">Crumbs</a></li>
+      <li class="active">Example</li>
+    </ol>
+   
+    <div class="widget widget-blue">
+      <div class="widget-title">
+		 <h3> Strategy Listening</h3>
+      </div>
+	   <div class="widget-content">
+        <ul class="alerts-list">
+          <li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 1 : </strong>  <a href="#" class="alert-link">Focus on the Last Line</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 1 : </strong> Focus on the Last Line</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>The last line of the dialogue probably contains the answer to the question.</td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td>Listen to the first line of the dialogue. If you understand it, that's good. If you don't understand it, don't worry because it probably does not contain the answer.</td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td>Be ready to focus on the last line of the dialogue because it probably contains the answer. Repeat the last line in your mind as you read through the answers in the box.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Billy really made a big mistake this time.</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>Yes, he <u>forgot to turn in his research paper.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about Billy?</i></td></tr>
+					</table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) It was the first time he made a mistake.
+					 <br>(B) He forgot to write his paper.
+					 <br>(C) He turned in the paper in the wrong place.
+					 <br>(D) He <u>didn't remember to submit his assignment.</u>
+					 <br><br>
+					 The last line of this dialogue indicates that Billy <i>forgot to turn in research paper,</i> and this means that <i>he didn't remember to submit</i> it. <br>The best answer is therefore answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          <li>
+          </li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 2 : </strong> <a href="#" class="alert-link">Choose Answers with Synonyms</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 2 : </strong> Choose Answers with Synonyms</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>As you listen to the last line of the dialogue, focus on key words in that time.</td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td>If you see any synonyms for key words in a particular answer, then you have probably found the correct answer.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>Why is Barbara feeling so happy?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>She just <u>started</u> <u>working</u> in a real estate agency.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the man say about Barbara?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) She always liked her work in real estate.
+					 <br>(B) She <u>began</u> a new <u>job</u>.
+					 <br>(C) She just bought some real estate.
+					 <br>(D) She bought a real estate agency.
+					 <br><br>
+					 In this dialogue, the key word <i>started</i> means <i>began,</i> and the key word <i>working</i> refers to <i>job.</i>
+					 <br>The best answer to this question is therefore answer (B).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          <li>
+          </li>
+            <div class="alert alert-info alert-dismissable">
+              <strong>Strategy 3 : </strong> <a href="#" class="alert-link">Avoid Similar Sounds</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 3 : </strong> Avoid Similar Sounds</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>Identify key words in the last line of the dialogue.</td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td>Identify words in the answers that contain similar sounds, and do not choose these answers.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Why couldn't Mark come with us?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>He was <u>searching</u> for a new <u>apartment.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about Mark?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) He was in the <u>department</u> office.
+					 <br>(B) He was looking for a place to live.
+					 <br>(C) He was working on his <u>research</u> project.
+					 <br>(D) He had an <u>appointment</u> at <u>church.</u>
+					 <br><br>
+					 The key words in the last line of the dialogue are <i>searching</i> and <i>apartment</i>. In answers (C) and (D), the word <i>research</i> and <i>church</i> sound like <i>search</i>, so these answers are incorrect. In answers (A) and (D), the words <i>department</i> and <i>appointment</i> sound like <i>apartment</i>, so these answers are incorrect.
+					 <br>The best answer is therefore answer (B).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+          <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 4 : </strong> <a href="#" class="alert-link">Draw Conclusions about <i>WHO</i>, <i>WHAT </i>,<i>WHERE</i></a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 4 : </strong> Draw Conclusions about <i>WHO</i>, <i>WHAT </i>,<i>WHERE</i></h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					It is common for you to be asked to draw one of the following conclusions in the sort dialogues :
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td><i>WHO is probably talking?</i></td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td><i>WHAT will s/he probably do next?</i></td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td><i>WHERE does the dialogue probably take place?</i></td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>Are you going into the <u>water</u>, or are you just going to lie there on the sand?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>I think I need to put on some <u>suntan lotion.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>Where does this conversation probably take place?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) At a beauty salon
+					 <br>(B) At the <u>beach</u>
+					 <br>(C) In a sandbox
+					 <br>(D) At an outdoor restaurant
+					 <br><br>
+					 The clues <i>water, sand,</i> and <i>suntan lotion</i> in the dialogue tell you that this dialogue probably takes place at the <i>beach</i>.
+					 <br>Answer (B) is therefore the correct answer.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 5 : </strong> <a href="#" class="alert-link">Listen for <i> WHO</i> and <i>WHAT </i>in Passives</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 5 : </strong> Passive Statements</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>If the dialogue contains a <i>passive</i> statement, the answer to the question is often an <i>active</i> statement.</td></tr>
+					<tr><td><i class="fa fa-key"></i></td><td>If the dialogue contains an <i>active</i> statement, the answer to the question is often a <i>passive</i> statement.</td></tr>
+					<tr><td></td><td></td></tr>
+					<tr><td>NOTE :</td><td>Check carefully <i>who</i> or <i>what</i> is doing the action in these questions.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Did Sally go to the bank this morning?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>Yes, she did. <u>She got a new checking account.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say imply?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Sally wrote several checks.
+					 <br>(B) Sally wanted to checked up on the bank.
+					 <br>(C) <u>A new checking account was opened. </u>
+					 <br>(D) Sally checked on the balance in her account.
+					 <br><br>
+					 In this dialogue, the woman uses the active statement <i>She got a new checking account,</i> which means that <i>Sally opened a checking account.</i> The correct answer uses the passive structure that <i>a new checking account was opened</i> to express the same idea.
+					 <br>Therefore, the best answer to the question above is answer (C).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 6 : </strong> <a href="#" class="alert-link">Listen for <i>WHO</i>and <i>WHAT</i> with Multiple Nouns</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 6 : </strong> <i>WHO</i>and <i>WHAT</i> with Multiple Nouns</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>When there are multiple nouns in a sentence, it is common for the answers to confuse which noun does that.</td></tr>your mind as you read through the answers in the box.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Do you know who is in the band now?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>I heard that <u>Mara replaced Robert</u> in the band.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about the band?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Robert became a new member of the band.
+					 <br>(B) Robert took Mara's place in the band.
+					 <br>(C) Mara didn't have a place in the band.
+					 <br>(D) <u>Mara took Robert's place</u> in the band.
+					 <br><br>
+					 In the woman's response to the man's question, she talks about two people (<i>Mara</i> and <i>Robert</i>), and these two people are confused in the answers. Because <i>Mara replaced Robert</i>, this means that <i>Mara took Robert's place </i>in the band.
+					 <br>The best answer is therefore answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 7 : </strong> <a href="#" class="alert-link">Listen for Negative Expressions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 7 : </strong> Types of Negative Expressions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Expression</th>
+							  <th>Example</th>
+							  <th>Correct Answer</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>Regular negative : <i>not</i> or <i>n't</i></td>
+							  <td>Tom is <i>not sad</i> about the results.</td>
+							  <td><i>not sad</i> = <i>happy</i></td>
+							</tr>
+							<tr>
+							  <td>Other negatives : <i>nobody, none, nothing, never</i></i></td>
+							  <td><i>Nobody</i> arrived on time.<br>Sal <i>never works hard.</i></td>
+							  <td><i>nobody ... on time = late <br>never works hard = lazy</i></td>
+							</tr>
+							<tr>
+							  <td>Negative prefixes : <i>un-, in-, dis-</i></td>
+							  <td>The patient was <i>insane.</i></td>
+							  <td><i>insane = not sane = crazy</i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>					
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>How did they get to their grandmother's house in Maine in only five hours?s</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>They <u>didn't</u> drive <u>slowly</u> on the trip to Maine.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about the trip?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) They drove rather <u>quickly</u>.
+					 <br>(B) They couldn't have driven more slowly.
+					 <br>(C) They wanted to travel slowly to Maine.
+					 <br>(D) They didn't drive to Maine.
+					 <br><br>
+					 The correct answer is answer (A). If they <i>didn't</i> drive <i>slowly</i> to Maine, this means that they drove rather <i>quickly</i>. Notice that the correct answer uses <i>quickly</i>, the opposite of <i>slowly</i>. The answer that use <i>slowly</i> are not correct.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 8 : </strong> <a href="#" class="alert-link">Listen for Double Negative Expressions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 8 : </strong> Double Negatives</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Situation</th>
+							  <th>Example</th>
+							  <th>Meaning</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>negative word (e.g : not, no, none) and a negative prefix (e.g : in-, un-, dis-)</td>
+							  <td>He didn't like the <i>unclean</i> office.</td>
+							  <td>did <i>not</i> like <i>unclean</i> ofice = like clean office</td>
+							</tr>
+							<tr>
+							  <td>two negatives verbs</td>
+							  <td>It <i>isn't snowing</i>, so they <i>aren't</i> going to the mountains.</td>
+							  <td>implies that they would go if it were snowing</td>
+							</tr>
+							<tr>
+							  <td><i>neither</i> or <i>not</i></td>
+							  <td>Sue <i>didn't like</i> the movie, and <i>neither did</i> Mark</td>
+							  <td>both did not like the movie</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>I can't believe the news that I heard about the concert.</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>Well, it <u>isn't impossible.</u> for the concert to take place.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about the concert?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) There's no possibility that the concert will take place.
+					 <br>(B) The concert will definitely not take place.
+					 <br>(C) The concert <u>might</u> take place.
+					 <br>(D) The concert can't take place.
+					 <br><br>
+					 The correct answer to this question is answer (C). If it <i>isn't impossible</i> for the correct to take place, then it is possible, and the modal <i>might</i> indicates possibility.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 9 : </strong> <a href="#" class="alert-link">Listen for "Almost Negative" Expressions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 9 : </strong> Common Almost Negative Expressions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Meaning</th>
+							  <th>Expression</th>
+							  <th>Example</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>almost none</td>
+							  <td><i>hardly, barely, scarcely, only</i></td>
+							  <td>There is <i>hardly</i> any food in the refrigerator.</td>
+							</tr>
+							<tr>
+							  <td>almost never</td>
+							  <td><i>rarely, seldom</i></td>
+							  <td>He <i>rarely</i> drives to work.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>Were you able to pay the electric bill?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>I had <u>barely enough</u> money.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the man imply?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) He had plenty of money for the bill.
+					 <br>(B) He did not have enough money for the bill.
+					 <br>(C) He <u>paid</u> the bill but <i>has no money left</i>.
+					 <br>(D) He was unable to pay the bill.
+					 <br><br>
+					 In the man's statement, the word <i>enough</i> indicates that there was <i>enough</i>, so he <i>paid the bill</i>. However, it was <i>barely</i> enough, so he almost did not have enough and certainly <i>has no money left</i>.
+					 <br>The correct answer is therefore answer (C).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 10 : </strong> <a href="#" class="alert-link">Listen for Negatives with Comparatives</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 10 : </strong> Comparatives With Negatives</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Comparative</th>
+							  <th>Example</th>
+							  <th>Meaning</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>more</td>
+							  <td><i>No</i> one is <i>more</i> beautiful than she is.</td>
+							  <td>She is <i>the most</i> beautiful.</td>
+							</tr>
+							<tr>
+							  <td>-er</td>
+							  <td>He <i>couldn't</i> be <i>happier.</i></td>
+							  <td>He is <i>extremely</i> happy.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>What do you think of the new student in math class?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i><u>No</u> one is <u>more intelligent</u> than she is.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the man say about the new student?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) She is not very smart.
+					 <br>(B) He is smarter than she is.
+					 <br>(C) Other students are smarter than she is.
+					 <br>(D) She is <u>the smartest</u> student in the class.
+					 <br><br>
+					 The man responds to the woman's question with the negative <i>No</i> and the comparative <i>more intelligent</i>, and this combination has a superlative meaning, <i>the smartest</i>.
+					 <br>The best answer is therefore answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 11 : </strong> <a href="#" class="alert-link">Listen for Expressions of Agreement</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 11 : </strong> Expressions of Agreement</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-hover">
+						  <thead>
+							<tr>
+							  <th>Agreement with Positive Statements</th>
+							  <th>Agreement with Negative Statements</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td><i>So do I.</td>
+							  <td><i>Neither do I.</td>
+							</tr>
+							<tr>
+							  <td><i>Me, too.</td>
+							  <td><i>I don't either</td>
+							</tr>
+							<tr>
+							  <td><i>I'll say!</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td><i>Isn't it!</td>
+							  <td></td>
+							</tr>
+							<tr>
+							  <td><i>You can say that again!</i></td>
+							  <td></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>I don't think that our history teacher is very interesting.</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>Neither do I.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the man means?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) He disagrees with the woman.
+					 <br>(B) He thinks the history teacher is interesting.
+					 <br>(C) He <u>shares the woman's opinion.</u>
+					 <br>(D) He doesn't think the woman's idea is good.
+					 <br><br>
+					 The expression <i>Neither do I.</i> is an expression that shows agreement with a negative statement, so the man <i>shares the woman's opinion.</i> The best answer is therefore answer (C).<br>
+					 The following chart list common expression that show agreement. You should become familiar with these expression.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 12 : </strong> <a href="#" class="alert-link">Listen for Expressions of Uncertainty and Suggestion</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 12 : </strong> Expressions of Uncertainty and Suggestion</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-hover">
+						  <thead>
+							<tr>
+							  <th>Uncertainty</th>
+							  <th>Suggestion</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td><i>...isn't ot (tag)?</i></td>
+							  <td><i>Why not...?</i></td>
+							</tr>
+							<tr>
+							  <td><i>As far as I know.</i></td>
+							  <td><i>Let's...</i></td>
+							</tr>
+							<tr>
+							  <td><i>As far as I can tell.</i></td>
+							  <td><i></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>I'll never have time to type my paper tomorrow.</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i><u>Why not</u> do it now?</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman suggest?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Finishing the paper today
+					 <br>(B) Not working on the paper now
+					 <br>(C) Never typing the paper
+					 <br>(D) Taking time out from the paper now
+					 <br><br>
+					 In this example, the expression <i>Why not</i> is an expression of suggestion, so the woman suggests <i>doing it now.</i> In this suggestion, the woman is referring to the paper that the needs to type, so the best answer is answer (A).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 13 : </strong> <a href="#" class="alert-link">Listen for Emphatic Expressions of Surprise</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 13 : </strong> Expressions of Emphatic Surprise</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Verb</th>
+							  <th>Emphatic Form</th>
+							  <th>Example</th>
+							  <th>Meaning</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td><i>be</i></td>
+							  <td><i>be,</i> with emphasis</td>
+							  <td>Then he <i><u>is</i></u> here!</td>
+							  <td>I tought he was not here.</td>
+							</tr>
+							<tr>
+							  <td>modal</td>
+							  <td>modal, with emphasis</td>
+							  <td>Then you <i><u>can</i></u> go!</td>
+							  <td>I thought you could not go.</td>
+							</tr>
+							<tr>
+							  <td>present tense</td>
+							  <td><i>do(es)</i>, with emphasis</td>
+							  <td>Then you <i><u>do</i></u> play tennis!</td>
+							  <td>I thought you did not play tennis.</td>
+							</tr>
+							<tr>
+							  <td>past tense</td>
+							  <td><i>did</i>, with emphasis</td>
+							  <td>Then she <i><u>did</i></u> read it.</td>
+							  <td>I thought she had not read it.</td>
+							</tr>
+							<tr>
+							  <td>perfect tense</td>
+							  <td><i>have</i>, with emphasis</td>
+							  <td>Then he <i><u>has</i></u> gone there.</td>
+							  <td>I thought he had not gone there.</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>Did you see Paul driving around in his Mustang?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>Then <u>he DID get</u> a new car.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What had the man thought?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Paul would definitely get a Mustang.
+					 <br>(B) Paul did not know how to drive.
+					 <br>(C) Paul did not like Mustangs.
+					 <br>(D) Paul <u>would not get</u> a new car.
+					 <br><br>
+					 In this dialogue the emphatic form <i>he <u>did</u> get</i> is used to show the man's surprise that Paul got a new car. It means that the man expected that Paul <i>would not get</i> a new car, so the best answer is answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 14 : </strong> <a href="#" class="alert-link">Listen for Wishes</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 14 : </strong> Key Information about Wishes</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Point</th>
+							  <th>Example</th>
+							  <th>Meaning</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td><i class="fa fa-key"></i> An <i>affirmative</i> wish implies a <i>negative</i> reality.<br><i class="fa fa-key"> A <i>negative</i> wish implies an <i>affirmative</i> reality</td>
+							  <td>I wish I <i>had time</i> to sleep.<br>I wish I <i>did not have time</i> to sleep.</td>
+							  <td>= no time to help<br>= time to help</td>
+							</tr>
+							<tr>
+							  <td><i class="fa fa-key"></i> A <i>past tense</i> verb implies a <i>present</i> reality.<br><i class="fa fa-key"> A <i>past perfect</i> tense verb implies a <i>past</i> reality</td>
+							  <td>I wish he <i>were</i> at home.*<br>I wish he <i>had been</i> at home.</td>
+							  <td>= is not at home<br>= was not at home.</td>
+							</tr>
+						  </tbody>
+						</table>
+						</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>It's too bad that you have to stay here and work during the school break.</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>I really <u>wish</u> I <u>could go</u> with you and the others to Palm Springs.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the man means?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Maybe he will go with the others on the trip.
+					 <br>(B) He is <u>unable to go on the trip.</u>
+					 <br>(C) He's happy to be going on the trip.
+					 <br>(D) He's going on the trip, but not with the others.
+					 <br><br>
+					 In this dialogue the man <i>wishes</i> that he <i>could go</i> with the others on the trip, so the implied meaning is that he is <i>unable to go.</i>
+					 <br>The correct answer is therefore answer (B).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 15 : </strong> <a href="#" class="alert-link">Listen for Untrue Conditions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 15 : </strong> Key Information about Untrue Conditions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+						  <thead>
+							<tr>
+							  <th>Point</th>
+							  <th>Example</th>
+							  <th>Meaning</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td><i class="fa fa-key"></i> An <i>affirmative</i> condition implies a <i>negative</i> reality.<br><i class="fa fa-key"> A <i>negative</i> condition implies an <i>affirmative</i> reality</td>
+							  <td>If she <i>were</i> at home, she could do it.*<br>If she <i>weren't</i> at home, she could do it.*</td>
+							  <td>= not at home<br>= at home</td>
+							</tr>
+							<tr>
+							  <td><i class="fa fa-key"></i> A <i>past tense</i> implies a <i>present</i> reality.<br><i class="fa fa-key"> A <i>past perfect</i> verb implies a <i>past</i> reality</td>
+							  <td>If I <i>had</i> money, I would buy it.<br>If I <i>had had</i> money, I would have bought it.</td>
+							  <td>= do not have money<br>= did not have money.</td>
+							</tr>
+							<tr>
+							  <td><i class="fa fa-key"></i><i>Had</i> can be used without <i>if</i>.</td>
+							  <td><i>Had</i> I <i>had</i> money, I would have bought it.**</td>
+							  <td>=did not have money.</td>
+							</tr>
+						  </tbody>
+						</table>
+						</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Do you think that you'll be able to go to the party?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i><u>If I had time,</u> I would go.</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about the party?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) Maybe she'll go.
+					 <br>(B) She has time, so she'll go.
+					 <br>(C) She is going even she doesn't have time.
+					 <br>(D) <u>It's impossible to go.</u>
+					 <br><br>
+					 In this question, the condition <i>If I had time</i> implies that the opposite is true. The woman does not have time for the party, so <i>it's impossible to go</i>.
+					 <br>Therefore, the best answer to this question is answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 16 : </strong> <a href="#" class="alert-link">Listen for TWO- and THREE- Part Verbs</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 16 : </strong>Listen for TWO- and THREE- Part Verbs</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>Two- and three- part verbs appear in some questions in the dialogues. These verbs are expression that include a verb and one more particle (such as <i>in, on,</i> or <i>at</i>). The particle changes the meaning of the verb. Questions involving two- and three- part verbs can be difficult for students because the addition of the particle changes the meaning of the verb in an idiomatic way.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>What time does the meeting start?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>Didn't you hear that it was <u>called of</u> by the director?</i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about the meeting?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) The director called a meeting.
+					 <br>(B) The director phoned her about the meeting.
+					 <br>(C) The director called the meeting to order.
+					 <br>(D) The director <u>canceled</u> the meeting.
+					 <br><br>
+					 In this question, the two- part verb <i>called off</i> has a different meaning from the verb <i>call</i>, which means <i>phone</i>. The two- part verb <i>called off</i> means <i>cancel</i>, so the best answer is answer (D).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 17 : </strong> <a href="#" class="alert-link">Listen for Idioms</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 17 : </strong> Listen for Idioms</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					<table>
+					<tr><td><i class="fa fa-key"></i></td><td>Idioms appear in some questions in the short dialogues. Idioms are special expression in a language that all speakers of the language know, these special expression describe one situation in life but are applied to many different areas of life. Idiom questions can be difficult for the students because they seem to be describing one situation when they are really describing a different situation.</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Tom is a full-time student and is holding down a full-time job.</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>He is really <u>burning the candle at both ends.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>What does the woman say about Tom?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 
+					 In your test book you or the computer screen, you read :
+					 <br>(A) He's lighting a candle.
+					 <br>(B) He's holding the candle at the top and the bottom.
+					 <br>(C) He's <u>doing too much.</u>
+					 <br>(D) He's working as a firefighter.
+					 <br><br>
+					 In this question, the idiom <i>burning the candle at both ends</i> has nothing to do with candles and nothing to do with burning or fires, so answers (A), (B), (D) are not correct. Instead, this idiom is an expression that is used in a situation when someone is trying to do more that he or she really can do, after all, a candle usually only burns at one end, so a candle that burns at two ends is <i>doing too much.</i> Therefore, the best answer to the question above is answer (C).
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		  <!-- LONG CONVERSATION-->
+		  <hr><h5>LONG CONVERSATION<h5></hr><hr>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 18 : </strong> <a href="#" class="alert-link">Anticipate the Topic</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 18 : </strong> Anticipate the Topic</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					It is very helpful to your overall comprehension if you know what topics to expect in the long conversations. You should therefOre try to anticipate the topics you will be hearing. For example, are the conversations about some aspect of school life, or some type of social issue, or a trip someone is planning? A helpful strategy is therefore to look briefly at the answers in the test book, before you actually hear the conversations on the recording, and try to determine the topics of the conversations that you will be hear.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 <div class="table-responsive">
+					 <table class="table">
+						<tr>
+							<td>1</td>
+							<td>(A)</td>
+							<td>Find <i>work on campus</i></td>
+							<td>4</td>
+							<td>(A)</td>
+							<td>Every morning<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td><i>Work</i> in the <i>employment office</i></td>
+							<td></td>
+							<td>(B)</td>
+							<td>Afternoons and weekends.<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>Help <i>student</i> find <i>jobs</i></td>
+							<td></td>
+							<td>(C)</td>
+							<td>When he's in class<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>Ask the woman question</td>
+							<td></td>
+							<td>(D)</td>
+							<td>Weekdays<td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>(A)</td>
+							<td>In the library</td>
+							<td>5</td>
+							<td>(A)</td>
+							<td>Fill out form<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td>In a classroom</td>
+							<td></td>
+							<td>(B)</td>
+							<td>Give her some additional information<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>In a campus office</td>
+							<td></td>
+							<td>(C)</td>
+							<td>Tell her some news<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>In an apartment</td>
+							<td></td>
+							<td>(D)</td>
+							<td>Phone her<td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>(A)</td>
+							<td>No more than ten</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td>At least twenty</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>Not more than twenty</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>Up to ten</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+					 </table>
+					 </div>
+					 <br><br>
+					 What is the topic of the conversation for question 1 trough 5?<i> <u>Looking for a job on campus.</u></i><hr>
+					 You can guess this because of the following clues :<br>
+					 <table>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>work on campus</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>employment office</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>student</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>jobs</i></td></tr>
+					</table>
+					
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 19 : </strong> <a href="#" class="alert-link">Anticipate the Questions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 19 : </strong> Anticipate the Questions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					It is very helpful to your ability to answer individual questions with the long conversations if you can anticipate what the questions will be and listen specifically for the answers to those questions.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 In your test book you or the computer screen, you read :
+					 <br>(A) In the airport
+					 <br>(B) In the library
+					 <br>(C) In the dormitory
+					 <br>(D) In the travel agent's office
+					 <br><br>
+					 You try to anticipate the question : <i><u>Where does the conversation probably take place?</i></u><hr>
+					 In this example, you can be quite certain that one of the question will be about where the conversation takes place. Since you are sure that this is one questions, you can listen carefully for clues that will give you the answer. This example shows that a helpful strategy is therefore to look briefly at the answers in the test book, before you actually hear the conversations on the recording, and try to determine the questions that you will be asked to answer.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 20 : </strong> <a href="#" class="alert-link">Determine the Topic</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 20 : </strong> Determine the Topic</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					As you listen to each long conversation, you should be thinking about the topic (subject) or main idea for each conversation. Since the first one or two sentences generally give the topic is while you are listening carefully to the first part of the conversation.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>You can't believe what I just got!</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>I bet you got that new car you've always wanted.</u></i></td></tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>Now, how in the world did you figure that out?</i></td></tr>
+					</table>
+					 <br>
+					 You think : <i><u>The topic of the conversation is the new car that the man just got.</i></u>
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 21 : </strong> <a href="#" class="alert-link">Draw Conclusions about <i>WHO, WHAT, WHEN, WHERE</i></a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 21 : </strong> Draw Conclusions about <i>WHO, WHAT, WHEN, WHERE</i></h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					As you listen to each long conversation, you should be trying to set the situation in your mind. You should be thinking the following thoughts :
+					<table>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>Who</strong> is talking?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>When</strong> does the conversation probably take place?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>Where</strong> does the conversation probably take place?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>What</strong> is the source of information for the conversation?</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>Why do you have so many books?</i></td></tr>
+						<tr><td>(woman)</td><td>:</td><td><i>I need them for my paper on George Washington. Do you know how I can check them out?</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>Yes, you should fo downstairs to the circulation desk and fill out a card for each book.</i></td></tr>
+					</table>
+					 <br>
+					 You think : <br>
+					<table>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>Who is probably talking?</td><td>(two students)</td></tr>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>Where are they?</td><td>(in the library)</td></tr>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>What course are they discussing?</td><td>(American History)</td></tr>
+					</table>
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 22 : </strong> <a href="#" class="alert-link">Listen for Answers in Order</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 22 : </strong> Listen for Answers in Order</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					There are two possible methods to use while you listen to a long conversation :
+					<table>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><i> You can just listen to the conversation (and ignore the answers).</i></td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><i> You can just follow along with the answers while you listen.</i></td></tr>
+					</table>
+					Some students prefer to just listen to the conversation while it is being spoken, and if that method works well for you, then that is what you should do. Other students find that they can answer more questions correctly if they read along with the answers while the conversation is being spoken. Because the detail questions are answered in order, it is possible to read along while you listen to the conversation on the recording.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr>
+							<td colspan=3>On the recording, you hear :</td>
+							
+							<td colspan=3>In your test book, you read (same time) :</td>
+							
+						<tr>
+							<td>(man)</td>
+							<td>:</td>
+							<td width=40%><i>Can I help you?</i></td>
+							<td>1.</td>
+							<td>(A) </td>
+							<td><u>A checking account</u><br></td>
+						</tr>
+						<tr>
+							<td>(woman)</td>
+							<td>:</td>
+							<td width=50%><i>I'm interested in opening an account.</i></td>
+							<td></td>
+							<td>(B)<br>(C)<br>(D)</td>
+							<td>A savings account<br>A money market account<br>A time to deposit account</td>
+						</tr>
+						<tr>
+							<td>(man)</td>
+							<td>:</td>
+							<td width=50%><i>Well, we have several different types of account : checking accounts, savings accounts, money market accounts, time deposit accounts.</i></td>
+							<td></td>
+							
+						</tr>
+						<tr>
+						<td>(woman)</td><td>:</td><td><i>It's a <u>checking account</u> that I am interested in.</i></td></tr>
+						<tr>
+							<td>(man)</td>
+							<td>:</td>
+							<td><i>I can help you with that. First you have to fill out a form, and then I need to see some <u>identification.</u> That's about all there is to it.</i></td>
+							<td width=5%>2.</td>
+							<td>(A)</td>
+							<td>A form</td>
+						</tr>
+						<tr><td>(woman)</td><td>:</td><td><i>That sound easy enough. Thanks for your help.</u></i></td>
+						<td></td>
+							<td>(B)<br>(C)<br>(D)</td>
+							<td>An account<br>A piece of <u>identification</u><br>A check</td>
+							</tr>
+						<tr><td>(narrator)</td><td>:</td><td><i>1. What type of account does the woman want?<br>2. What does the man need for her to show him?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 <br><br>
+					When you read the answers to the first question, you can anticipate that the first question is. <i>What type of account?</i> As you listen, you determine that the woman wants <i>a checking account.</i> Therefore, you can anticipate that the best answer to the first question is (A).
+					<br>
+					When you read the answers to the second question, you can anticipate that the second question is going to ask <i>What thing ...?</i> In the conversation, the man asks her to fill out a <i>form</i> and show some <i>identification</i>, so as you are listening you can anticipate that the correct answer to the second question is answer (C).
+
+
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <hr><h5>LONG TALKS<h5></hr><hr>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 23 : </strong> <a href="#" class="alert-link">Anticipate the Topic</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 23 : </strong> Anticipate the Topic</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					It is very helpful to your overall comprehension if you know what topics to expect in the long talks. You should therefOre try to anticipate the topics you will be hearing. For example, are the conversations about some aspect of school life, or some type of social issue, or a trip someone is planning? A helpful strategy is therefore to look briefly at the answers in the test book, before you actually hear the conversations on the recording, and try to determine the topics of the conversations that you will be hear.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 <div class="table-responsive">
+					 <table class="table">
+						<tr>
+							<td>1</td>
+							<td>(A)</td>
+							<td>During a <i>biology</i> laboratory session</td>
+							<td>4</td>
+							<td>(A)</td>
+							<td>Room assignments<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td>In a biology study group</td>
+							<td></td>
+							<td>(B)</td>
+							<td>Exam topics<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>On the <i>first day of class</i></td>
+							<td></td>
+							<td>(C)</td>
+							<td><i>Reading assignments</i><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>Just before the final exam</td>
+							<td></td>
+							<td>(D)</td>
+							<td>The first lecture<td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>(A)</td>
+							<td>Once a week</td>
+							<td>5</td>
+							<td>(A)</td>
+							<td><i>Exams and lab work</i><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td>Two times a week</td>
+							<td></td>
+							<td>(B)</td>
+							<td>Reading and writing assignments<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>Three times a week</td>
+							<td></td>
+							<td>(C)</td>
+							<td>Class participation and grades on examinations<td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>For fifteen hours</td>
+							<td></td>
+							<td>(D)</td>
+							<td>Lecture and laboratory attendance<td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>(A)</td>
+							<td>To do the first laboratory assignment</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(B)</td>
+							<td>To take the first <i>exam</i></td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(C)</td>
+							<td>To study the laboratory manual</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(D)</td>
+							<td>To read one chapter of the text</td>
+							<td></td>
+							<td></td>
+							<td><td>
+						</tr>
+					 </table>
+					 </div>
+					 <br><br>
+					 What is the topic of the conversation for question 1 trough 5?<i> <u> the requirements of biology class</u></i><hr>
+					 You can guess this because of the following clues :<br>
+					 <table>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>biology</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>first day of class</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>reading assignment</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>exam(s)</i></td></tr>
+					<tr><td width=20%><td width=20%><i class="fa fa-key"></i></td><td><i>lab work</i></td></tr>
+					</table>
+					
+					</div>
+				  
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 24 : </strong> <a href="#" class="alert-link">Anticipate the Questions</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 24 : </strong> Anticipate the Questions</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				  <li>
+					<div class="alert alert-warning alert-dismissable">
+					It is very helpful to your ability to answer individual questions with the long talks if you can anticipate what the questions will be and listen specifically for the answers to those questions. (as you did with the long conversations).
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 In your test book you or the computer screen, you read :
+					 <br>(A) For three weeks
+					 <br>(B) For three days
+					 <br>(C) For three months
+					 <br>(D) For three hours
+					 <br><br>
+					 You try to anticipate the question : <i><u>How long does (something) last?</i></u><hr>
+					 In this example, you can be quite certain that one of the question will be about where the conversation takes place. Since you are sure that this is one questions, you can listen carefully for clues that will give you the answer. This example shows that a helpful strategy is therefore to look briefly at the answers in the test book, before you actually hear the conversations on the recording, and try to determine the questions that you will be asked to answer.
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 25 : </strong> <a href="#" class="alert-link">Determine the Topic</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 25 : </strong> Determine the Topic</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				 <li>
+					<div class="alert alert-warning alert-dismissable">
+					As you listen to each long conversation, you should be thinking about the topic (subject) or main idea for each conversation. Since the first one or two sentences generally give the topic is while you are listening carefully to the first part of the conversation.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(man)</td><td>:</td><td><i>The major earthquake that occurred east of Los Angeles in 1971 is still affecting the economy of the area today.</i></td></tr>
+						</table>
+					 <br>
+					 You think : <i><u>The topic of the talk is the effect of the 1971 earthquake on Los Angeles today.</i></u>
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 26 : </strong> <a href="#" class="alert-link">Draw Conclusions about <i>WHO, WHAT, WHEN, WHERE</i></a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 26 : </strong> Draw Conclusions about <i>WHO, WHAT, WHEN, WHERE</i></h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				 <li>
+					<div class="alert alert-warning alert-dismissable">
+					As you listen to each long talk, you should be trying to set the situation in your mind. You should be thinking the following thoughts :
+					<table>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>Who</strong> is talking?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>When</strong> does the talk probably take place?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>Where</strong> does the talk probably take place?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>What</strong> course is the talk concerned with?</td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><strong>What</strong> is the source of information for the talk?</td></tr>
+					</table>
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 On the recording, you hear :
+					 
+					 <table>
+						<tr><td>(woman)</td><td>:</td><td><i>The next stop on our tour of Atlanta will be the original home of Coca-Cola, at 107 Marietta Street, Coca-Cola was manufactured at his location until early in September of 1888.</i></td></tr>
+						<tr><td>(man)</td><td>:</td><td><i>Yes, you should fo downstairs to the circulation desk and fill out a card for each book.</i></td></tr>
+					</table>
+					 <br>
+					 You think : <br>
+					<table>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>Who is probably talking?</td><td>(a tour guide)</td></tr>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>Where are they?</td><td>(in Atlanta)</td></tr>
+						<tr><td width=5%><td width=5%><i class="fa fa-key"></i></td><td width=65%>When does the talk take place?</td><td>(in the middle of a tour)</td></tr>
+					</table>
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+		   <li>
+            <div class="alert alert-info alert-dismissable">
+			  <strong>Strategy 27 : </strong> <a href="#" class="alert-link">Listen for Answers in Order</a>.
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+			<div class="widget widget-blue"><div class="widget-title">
+				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
+			<h3></i> Strategy 27 : </strong> Listen for Answers in Order</h3></div>
+			  <div class="widget-content">
+				<ul class="alerts-list">
+				<li>
+					<div class="alert alert-warning alert-dismissable">
+					There are two possible methods to use while you listen to a long talk :
+					<table>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><i> You can just listen to the talk (and ignore the answers).</i></td></tr>
+					<tr><td width=1%><td width=5%><i class="fa fa-key"></i></td><td><i> You can just follow along with the answers while you listen.</i></td></tr>
+					</table>
+					Some students prefer to just listen to the talk while it is being spoken, and if that method works well for you, then that is what you should do. Other students find that they can answer more questions correctly if they read along with the answers while the conversation is being spoken. Because the detail questions are answered in order, it is possible to read along while you listen to the talk on the recording.
+					</div>
+				  </li>
+				  <li>
+					<div class="alert alert-success alert-dismissable">
+					 <strong><u>Example</strong></u><br>
+					 <br>
+					 <table>
+						<tr>
+							<td colspan=3>On the recording, you hear :</td>
+							<td colspan=3>In your test book, you read (same time) :</td>
+						<tr>
+							<td>(woman)</td>
+							<td>:</td>
+							<td width=50%><i>The Great Chicago Fire began on October 8, 1871, and according to legend began when aa cow knocked over a lantern in <u>Mrs. O'Leary's born.</u> No matter how it began, it was a disastrous fire. The preceding summer had been exceedingly <u>dry</u> in the Chicago area, and the extreme dryness accompanied by Chicago's infamous <u>winds</u> created an inferno that destroyed 18,000 buildings and <u>killed more than 300 people</u> before it was extinguished the following day.</i></td>
+							<td width=5%>1.</td>
+							<td>(A)<br>(B)<br>(C)<br>(D)</td>
+							<td><u>In a barn<br>In Mrs. O'Leary's home<br>In a cow pasture <br>In a lantern factory</u></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>2.</td>
+							<td>(A)<br>(B)<br>(C)<br>(D)</td>
+							<td>The <u>dry</u> weather prior to the fire made it worse.<br>It happened during the summer.<br>Chicago's <u>winds</u> made it worse.<br>It <u>killed</u> many people.</td>
+						</tr>
+							
+						<tr><td>(narrator)</td><td>:</td><td><i>1. According to legend, where did the Chicago Fire begin?<br>2. Which of the following is not true about the Great Chicago Fire?</i></td></tr>
+						<tr><td></td><td>:</td><td></td></tr>
+					 </table>
+					 <br><br>
+					When you read the answers to the first question, you can anticipate that the first question is : <i>Where did something happen?</i> As you listen, you determine that the fire began in <i>Mrs. O'Leary barn.</i> Therefore, you can anticipate that the best answer to the first question is (A).<br>
+					If you read the answers to the second question while you listen to the talk, you can determine that answers (A), (C), (D) are true. Answer (B) is not true, the fire did not begin in the summer, it began in <i>October</i>, which is autumn. Therefore, answer (B) is the best answer to the question <i>Which following is <strong>not</strong> true about the Great Chicago Fire?</i>
+					</div>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src='../../assets/js/plugins/jquery.pnotify.js'></script>
+<script src='../../assets/js/plugins/jquery.sparkline.min.js'></script>
+<script src='../../assets/js/plugins/mwheelIntent.js'></script>
+<script src='../../assets/js/plugins/mousewheel.js'></script>
+<script src='../../assets/js/bootstrap/tab.js'></script>
+<script src='../../assets/js/bootstrap/dropdown.js'></script>
+<script src='../../assets/js/bootstrap/tooltip.js'></script>
+<script src='../../assets/js/bootstrap/collapse.js'></script>
+<script src='../../assets/js/bootstrap/scrollspy.js'></script>
+<script src='../../assets/js/plugins/bootstrap-datepicker.js'></script>
+<script src='../../assets/js/bootstrap/transition.js'></script>
+<script src='../../assets/js/plugins/jquery.knob.js'></script>
+<script src='../../assets/js/plugins/jquery.flot.min.js'></script>
+<script src='../../assets/js/plugins/fullcalendar.js'></script>
+<script src='../../assets/js/plugins/datatables/datatables.min.js'></script>
+<script src='../../assets/js/plugins/chosen.jquery.min.js'></script>
+<script src='../../assets/js/plugins/jquery.timepicker.min.js'></script>
+<script src='../../assets/js/plugins/daterangepicker.js'></script>
+<script src='../../assets/js/plugins/colpick.js'></script>
+<script src='../../assets/js/plugins/moment.min.js'></script>
+<script src='../../assets/js/plugins/datatables/bootstrap.datatables.js'></script>
+<script src='../../assets/js/bootstrap/modal.js'></script>
+<script src='../../assets/js/plugins/raphael-min.js'></script>
+<script src='../../assets/js/plugins/morris-0.4.3.min.js'></script>
+<script src='../../assets/js/plugins/justgage.1.0.1.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskedinput.min.js'></script>
+<script src='../../assets/js/plugins/jquery.maskmoney.js'></script>
+<script src='../../assets/js/plugins/summernote.js'></script>
+<script src='../../assets/js/plugins/dropzone-amd-module.js'></script>
+<script src='../../assets/js/plugins/jquery.validate.min.js'></script>
+<script src='../../assets/js/plugins/jquery.bootstrap.wizard.min.js'></script>
+<script src='../../assets/js/plugins/jscrollpane.min.js'></script>
+<script src='../../assets/js/application.js'></script>
+
+<script src='../../assets/js/template_js/table.js'></script>
+
+
+</body>
+
+</html>

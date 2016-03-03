@@ -1,0 +1,19 @@
+/ Login Modal
+#loginModal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Login example
+      .modal-body
+        %form{:action => "#", :role => "form"}
+          .row
+            .col-md-6
+              %label.control-label Username
+              %input.form-control{:type => "text", :placeholder => "your username"}
+            .col-md-6
+              %label.control-label Password
+              %input.form-control{:type => "text", :placeholder => "your password"}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button"} Log In
