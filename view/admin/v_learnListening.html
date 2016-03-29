@@ -185,7 +185,7 @@
               <strong>Strategy 1 : </strong>  <a href="#" class="alert-link">Focus on the Last Line</a>.
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             </div>
-			<div class="widget widget-blue"><div class="widget-title">
+			<div class="widget widget-blue" style="display:none"><div class="widget-title">
 				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
 			<h3></i> Strategy 1 : </strong> Focus on the Last Line</h3></div>
 			  <div class="widget-content">
@@ -314,11 +314,11 @@
 			</div>
           </li>
           <li>
-            <div class="alert alert-info alert-dismissable">
+            <div class="alert alert-info alert-dismissable" id="strategy4" onClick="hello();">
 			  <strong>Strategy 4 : </strong> <a href="#" class="alert-link">Draw Conclusions about <i>WHO</i>, <i>WHAT </i>,<i>WHERE</i></a>.
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             </div>
-			<div class="widget widget-blue"><div class="widget-title">
+			<div class="widget widget-blue" id="show4"><div class="widget-title">
 				<div class="widget-controls"><a href="#" class="widget-control widget-control-remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-times-circle"></i></a></div>
 			<h3></i> Strategy 4 : </strong> Draw Conclusions about <i>WHO</i>, <i>WHAT </i>,<i>WHERE</i></h3></div>
 			  <div class="widget-content">
@@ -1818,7 +1818,13 @@
 <script src='../../assets/js/application.js'></script>
 
 <script src='../../assets/js/template_js/table.js'></script>
+<script type="text/javascript">
+function hello(){
 
+    $("show4").hide();
+
+}
+</script>
 
 </body>
 
